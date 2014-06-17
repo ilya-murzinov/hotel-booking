@@ -17,7 +17,7 @@ public class HotelBean {
     private HotelService hotelService;
 
     public int getI() {
-        return 42;
+        return hotelService.listHotel().size();
     }
 
     public HotelService getHotelService() {

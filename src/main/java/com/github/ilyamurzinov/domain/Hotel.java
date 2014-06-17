@@ -3,23 +3,23 @@ package com.github.ilyamurzinov.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Hotel")
+@Table(name = "hotel")
 public class Hotel {
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     @GeneratedValue
     private long id;
 
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "Address")
+    @Column(name = "address")
     private String address;
 
-    @Column(name = "Price")
+    @Column(name = "price")
     private String price;
 
-    @Column(name = "Phone")
+    @Column(name = "phone")
     private String phone;
 
     public long getId() {
