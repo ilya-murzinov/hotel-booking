@@ -1,6 +1,7 @@
 package com.github.ilyamurzinov.dao;
 
 import com.github.ilyamurzinov.domain.Hotel;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,9 @@ public class HotelDAOImpl implements HotelDAO {
 
     @Override
     public Hotel getHotel(int id) {
-        return (Hotel) sessionFactory.getCurrentSession().load(Hotel.class, id);
+        Hotel hotel = (Hotel) sessionFactory.getCurrentSession().load(Hotel.class, id);
+        Hibernate.initialize(hotel);
+        return hotel;
     }
 
     @Override

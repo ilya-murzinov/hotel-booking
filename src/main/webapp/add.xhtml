@@ -15,6 +15,43 @@
         <ui:insert name="h2">
             Add new hotel:
         </ui:insert>
+        <h:panelGrid columns="3">
+
+            Name :
+            <h:inputText id="name" value="#{hotelsProvider.name}"
+                         size="20" required="true"
+                         label="Name" >
+            </h:inputText>
+
+            <h:message for="name" style="color:red" />
+
+            Address :
+            <h:inputTextarea id="address" value="#{hotelsProvider.address}"
+                             cols="30" rows="10" required="true"
+                             label="Address" >
+            </h:inputTextarea>
+
+            <h:message for="address" style="color:red" />
+
+            Phone :
+            <h:inputText id="phone" value="#{hotelsProvider.phone}"
+                         size="20" required="true"
+                         label="Name" >
+            </h:inputText>
+
+            <h:message for="name" style="color:red" />
+
+            Price :
+            <h:inputText id="price" value="#{hotelsProvider.price}"
+                         size="20" required="true"
+                         label="Name" >
+            </h:inputText>
+
+            <h:message for="name" style="color:red" />
+
+        </h:panelGrid>
+
+        <h:button value="Add" outcome="#{hotelsProvider.addHotel()}"/>
     </h2>
 </h:body>
 </html>
