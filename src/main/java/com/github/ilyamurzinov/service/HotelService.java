@@ -9,6 +9,8 @@ import java.util.List;
  *         Date: 16.06.14
  */
 public interface HotelService {
+    public Hotel getHotel(int id);
+
     public void addHotel(Hotel hotel);
 
     public List<Hotel> listHotel();

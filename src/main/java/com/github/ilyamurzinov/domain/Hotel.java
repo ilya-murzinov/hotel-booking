@@ -8,7 +8,7 @@ public class Hotel {
     @Id
     @Column(name = "id")
     @GeneratedValue
-    private long id;
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -22,7 +22,7 @@ public class Hotel {
     @Column(name = "phone")
     private String phone;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

@@ -18,6 +18,11 @@ public class HotelDAOImpl implements HotelDAO {
     private SessionFactory sessionFactory;
 
     @Override
+    public Hotel getHotel(int id) {
+        return (Hotel) sessionFactory.getCurrentSession().load(Hotel.class, id);
+    }
+
+    @Override
     public void addHotel(Hotel hotel) {
         sessionFactory.getCurrentSession().save(hotel);
     }
