@@ -21,6 +21,7 @@
           Name :
           <h:inputText id="name" value="#{hotelViewBean.hotel.name}"
                        size="20" required="true"
+                       maxlength="100"
                        label="Name" >
           </h:inputText>
 
@@ -29,6 +30,7 @@
           Address :
           <h:inputText id="address" value="#{hotelViewBean.hotel.address}"
                            cols="20" required="true"
+                           maxlength="200"
                            label="Address" >
           </h:inputText>
 
@@ -37,18 +39,18 @@
           Phone :
           <h:inputText id="phone" value="#{hotelViewBean.hotel.phone}"
                        size="20" required="true"
-                       label="Name" >
+                       label="Phone" >
           </h:inputText>
 
-          <h:message for="name" style="color:red" />
+          <h:message for="phone" style="color:red" />
 
           Price :
           <h:inputText id="price" value="#{hotelViewBean.hotel.price}"
                        size="20" required="true"
-                       label="Name" >
+                       label="Price" >
           </h:inputText>
 
-          <h:message for="name" style="color:red" />
+          <h:message for="price" style="color:red" />
 
       </h:panelGrid>
 

@@ -86,13 +86,15 @@ public class HotelViewBean {
         return "index";
     }
 
-    public void addComment() {
+    public String addComment() {
         Comment comment = getCommentModel();
         comment.setHotel(getHotel());
         commentService.addComment(comment);
+        return "hotel?id=" + id + "&faces-redirect=true";
     }
 
-    public void deleteComment(int id) {
+    public String deleteComment(int id) {
         commentService.deleteComment(id);
+        return "hotel?id=" + this.id + "&faces-redirect=true";
     }
 }

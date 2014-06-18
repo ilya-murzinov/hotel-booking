@@ -50,12 +50,24 @@
         </h:column>
       </h:dataTable>
       <h:form>
-          <h:panelGrid columns="2">
+          <h:panelGrid columns="3">
           <h:outputLabel>Author: </h:outputLabel>
-          <h:inputText value="#{hotelViewBean.commentModel.author}"/>
+          <h:inputText
+                  id="author"
+                  required="true"
+                  maxlength="30"
+                  value="#{hotelViewBean.commentModel.author}"/>
+          <h:message for="author" style="color:Red"/>
           <h:outputLabel>Comment: </h:outputLabel>
-          <h:inputTextarea value="#{hotelViewBean.commentModel.text}"/>
-          <h:commandButton value="Add comment" action="#{hotelViewBean.addComment}"/>
+          <h:inputTextarea
+                  id="text"
+                  required="true"
+                  maxlength="1000"
+                  value="#{hotelViewBean.commentModel.text}"/>
+          <h:message for="text" style="color:Red"/>
+          <h:commandButton
+                  value="Add comment"
+                  action="#{hotelViewBean.addComment}"/>
           </h:panelGrid>
       </h:form>
   </h:body>
