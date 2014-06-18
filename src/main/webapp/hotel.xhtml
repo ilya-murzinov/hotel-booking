@@ -7,41 +7,56 @@
       xmlns:f="http://java.sun.com/jsf/core"
         >
   <f:metadata>
-      <f:viewParam name="id" value="#{hotelBean.id}"/>
+      <f:viewParam name="id" value="#{hotelViewBean.id}"/>
   </f:metadata>
   <h:head>
       <title><ui:insert name="title">Hotel Booking</ui:insert></title>
   </h:head>
 
   <h:body>
+      <h:link value="Home" outcome="index"/>
       <h2>
           <ui:insert name="h2">
-              #{hotelBean.hotel.name}
+              #{hotelViewBean.hotel.name}
           </ui:insert>
       </h2>
       <h:panelGrid columns="2">
           <h:outputLabel>Name:</h:outputLabel>
-          #{hotelBean.hotel.name}
+          #{hotelViewBean.hotel.name}
           <h:outputLabel>Address:</h:outputLabel>
-          #{hotelBean.hotel.address}
+          #{hotelViewBean.hotel.address}
           <h:outputLabel>Phone:</h:outputLabel>
-          #{hotelBean.hotel.phone}
+          #{hotelViewBean.hotel.phone}
           <h:outputLabel>Price:</h:outputLabel>
-          #{hotelBean.hotel.price}
+          #{hotelViewBean.hotel.price}
       </h:panelGrid>
       <h:form>
         <h:button value="Edit" outcome="edit">
-            <f:param name="id" value="#{hotelBean.id}"/>
+            <f:param name="id" value="#{hotelViewBean.id}"/>
         </h:button>
-        <h:commandButton value="Delete" action="#{hotelBean.delete}"/>
+        <h:commandButton value="Delete" action="#{hotelViewBean.deleteHotel}"/>
       </h:form>
-      <h:dataTable value="#{hotelBean.hotel.comments}" var="comment">
+      <h:dataTable value="#{hotelViewBean.hotel.comments}" var="comment">
         <h:column>
           <ui:insert name="h3">#{comment.author}</ui:insert>
         </h:column>
-          <h:column>
-              <ui:insert>#{comment.text}</ui:insert>
-          </h:column>
+        <h:column>
+            <ui:insert>#{comment.text}</ui:insert>
+        </h:column>
+        <h:column>
+            <h:form>
+              <h:commandLink value="Delete comment" action="#{hotelViewBean.deleteComment(comment.id)}"/>
+            </h:form>
+        </h:column>
       </h:dataTable>
+      <h:form>
+          <h:panelGrid columns="2">
+          <h:outputLabel>Author: </h:outputLabel>
+          <h:inputText value="#{hotelViewBean.commentModel.author}"/>
+          <h:outputLabel>Comment: </h:outputLabel>
+          <h:inputTextarea value="#{hotelViewBean.commentModel.text}"/>
+          <h:commandButton value="Add comment" action="#{hotelViewBean.addComment}"/>
+          </h:panelGrid>
+      </h:form>
   </h:body>
 </html>

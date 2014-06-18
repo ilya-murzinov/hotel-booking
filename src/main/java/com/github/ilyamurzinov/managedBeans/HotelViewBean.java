@@ -2,6 +2,7 @@ package com.github.ilyamurzinov.managedBeans;
 
 import com.github.ilyamurzinov.domain.Comment;
 import com.github.ilyamurzinov.domain.Hotel;
+import com.github.ilyamurzinov.service.CommentService;
 import com.github.ilyamurzinov.service.HotelService;
 
 import javax.faces.bean.*;
@@ -11,14 +12,33 @@ import java.util.List;
  * @author Ilya Murzinov
  *         Date: 18.06.14
  */
-@ManagedBean(name = "hotelBean")
+@ManagedBean(name = "hotelViewBean")
 @ViewScoped
-public class HotelBean {
+public class HotelViewBean {
     @ManagedProperty(value = "#{hotelServiceImpl}")
     private HotelService hotelService;
+    @ManagedProperty(value = "#{commentServiceImpl}")
+    private CommentService commentService;
     private int id;
     private Hotel hotel;
     private List<Comment> comments;
+    private Comment commentModel = new Comment();
+
+    public CommentService getCommentService() {
+        return commentService;
+    }
+
+    public void setCommentService(CommentService commentService) {
+        this.commentService = commentService;
+    }
+
+    public Comment getCommentModel() {
+        return commentModel;
+    }
+
+    public void setCommentModel(Comment commentModel) {
+        this.commentModel = commentModel;
+    }
 
     public List<Comment> getComments() {
         return comments;
@@ -61,8 +81,18 @@ public class HotelBean {
         return "";
     }
 
-    public String delete() {
+    public String deleteHotel() {
         hotelService.removeHotel(getHotel().getId());
         return "index";
+    }
+
+    public void addComment() {
+        Comment comment = getCommentModel();
+        comment.setHotel(getHotel());
+        commentService.addComment(comment);
+    }
+
+    public void deleteComment(int id) {
+        commentService.deleteComment(id);
     }
 }

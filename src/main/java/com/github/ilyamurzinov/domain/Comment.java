@@ -42,6 +42,10 @@ public class Comment {
         return hotel;
     }
 
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
     public void setAuthor(String author) {
         this.author = author;
     }
