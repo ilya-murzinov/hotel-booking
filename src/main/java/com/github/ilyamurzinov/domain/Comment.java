@@ -9,17 +9,16 @@ import javax.persistence.*;
  *         Date: 17.06.14
  */
 @Entity
-@Table(name = "Comment")
+@Table(name = "comment")
 public class Comment {
     @Id
     @GeneratedValue
     @Column(name = "id")
     private int id;
 
-    @Id
-    @ForeignKey(name = "hotel")
-    @Column(name = "hotelId")
-    private int hotelId;
+    @ManyToOne
+    @JoinColumn(name = "hotelId")
+    private Hotel hotel;
 
     @Column(name = "author")
     private String author;
@@ -31,10 +30,6 @@ public class Comment {
         return id;
     }
 
-    public int getHotelId() {
-        return hotelId;
-    }
-
     public String getAuthor() {
         return author;
     }
@@ -43,8 +38,8 @@ public class Comment {
         return text;
     }
 
-    public void setHotelId(int hotelId) {
-        this.hotelId = hotelId;
+    public Hotel getHotel() {
+        return hotel;
     }
 
     public void setAuthor(String author) {
@@ -53,5 +48,9 @@ public class Comment {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

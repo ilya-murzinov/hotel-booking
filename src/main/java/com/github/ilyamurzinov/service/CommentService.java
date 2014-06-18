@@ -9,8 +9,6 @@ import java.util.List;
  *         Date: 18.06.14
  */
 public interface CommentService {
-    List<Comment> listComments(int hotelId);
-
     void addComment(Comment comment);
 
     void deleteComment(int id);

@@ -20,9 +20,7 @@ public class HotelDAOImpl implements HotelDAO {
 
     @Override
     public Hotel getHotel(int id) {
-        Hotel hotel = (Hotel) sessionFactory.getCurrentSession().load(Hotel.class, id);
-        Hibernate.initialize(hotel);
-        return hotel;
+        return (Hotel) sessionFactory.getCurrentSession().get(Hotel.class, id);
     }
 
     @Override
@@ -37,7 +35,7 @@ public class HotelDAOImpl implements HotelDAO {
     }
 
     @Override
-    public void removeHotel(long id) {
+    public void removeHotel(int id) {
         Hotel hotel = (Hotel) sessionFactory.getCurrentSession().load(Hotel.class, id);
         if (hotel != null) {
             sessionFactory.getCurrentSession().delete(hotel);

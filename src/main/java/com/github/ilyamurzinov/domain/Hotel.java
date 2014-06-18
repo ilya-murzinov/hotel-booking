@@ -1,6 +1,7 @@
 package com.github.ilyamurzinov.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "hotel")
@@ -22,6 +23,9 @@ public class Hotel {
     @Column(name = "phone")
     private String phone;
 
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    private List<Comment> comments;
+
     public int getId() {
         return id;
     }
@@ -42,6 +46,10 @@ public class Hotel {
         return phone;
     }
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -56,5 +64,13 @@ public class Hotel {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

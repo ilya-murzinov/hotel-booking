@@ -37,7 +37,7 @@ public class HotelServiceImpl implements HotelService {
 
     @Transactional
     @Override
-    public void removeHotel(long id) {
+    public void removeHotel(int id) {
         hotelDAO.removeHotel(id);
     }
 }

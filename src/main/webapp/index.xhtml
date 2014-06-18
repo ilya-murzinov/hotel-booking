@@ -13,10 +13,10 @@
   <h:body>
     <h2>
         <ui:insert name="h2">
-          #{hotelsProvider.listHotels().size()} hotels available:
+          #{hotelsListBean.count} hotels available:
         </ui:insert>
     </h2>
-    <h:dataTable value="#{hotelsProvider.listHotels()}" var="hotel">
+    <h:dataTable value="#{hotelsListBean.list}" var="hotel">
         <h:column>
             <h:link value="#{hotel.name}" outcome="hotel">
                 <f:param name="id" value="#{hotel.id}"/>

@@ -15,5 +15,5 @@ public interface HotelDAO {
 
     public List<Hotel> listHotel();
 
-    public void removeHotel(long id);
+    public void removeHotel(int id);
 }

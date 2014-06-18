@@ -17,17 +17,12 @@ public class CommentServiceImpl implements CommentService {
     private CommentDAO commentDAO;
 
     @Override
-    public List<Comment> listComments(int hotelId) {
-        return null;
-    }
-
-    @Override
     public void addComment(Comment comment) {
-
+        commentDAO.addComment(comment);
     }
 
     @Override
     public void deleteComment(int id) {
-
+        commentDAO.deleteComment(id);
     }
 }

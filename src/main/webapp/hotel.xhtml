@@ -6,6 +6,9 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
         >
+  <f:metadata>
+      <f:viewParam name="id" value="#{hotelBean.id}"/>
+  </f:metadata>
   <h:head>
       <title><ui:insert name="title">Hotel Booking</ui:insert></title>
   </h:head>
@@ -13,10 +16,32 @@
   <h:body>
       <h2>
           <ui:insert name="h2">
-              #{hotelsProvider.getHotelCurrent().name}
+              #{hotelBean.hotel.name}
           </ui:insert>
       </h2>
-      <h:button value="Edit" outcome="edit"/>
-      <h:button value="Delete" outcome="index"/>
+      <h:panelGrid columns="2">
+          <h:outputLabel>Name:</h:outputLabel>
+          #{hotelBean.hotel.name}
+          <h:outputLabel>Address:</h:outputLabel>
+          #{hotelBean.hotel.address}
+          <h:outputLabel>Phone:</h:outputLabel>
+          #{hotelBean.hotel.phone}
+          <h:outputLabel>Price:</h:outputLabel>
+          #{hotelBean.hotel.price}
+      </h:panelGrid>
+      <h:form>
+        <h:button value="Edit" outcome="edit">
+            <f:param name="id" value="#{hotelBean.id}"/>
+        </h:button>
+        <h:commandButton value="Delete" action="#{hotelBean.delete}"/>
+      </h:form>
+      <h:dataTable value="#{hotelBean.hotel.comments}" var="comment">
+        <h:column>
+          <ui:insert name="h3">#{comment.author}</ui:insert>
+        </h:column>
+          <h:column>
+              <ui:insert>#{comment.text}</ui:insert>
+          </h:column>
+      </h:dataTable>
   </h:body>
 </html>
