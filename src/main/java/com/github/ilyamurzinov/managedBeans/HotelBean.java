@@ -12,9 +12,9 @@ import java.util.List;
  * @author Ilya Murzinov
  *         Date: 18.06.14
  */
-@ManagedBean(name = "hotelViewBean")
+@ManagedBean(name = "hotelBean")
 @ViewScoped
-public class HotelViewBean {
+public class HotelBean {
     @ManagedProperty(value = "#{hotelServiceImpl}")
     private HotelService hotelService;
     @ManagedProperty(value = "#{commentServiceImpl}")
@@ -23,10 +23,6 @@ public class HotelViewBean {
     private Hotel hotel;
     private List<Comment> comments;
     private Comment commentModel = new Comment();
-
-    public CommentService getCommentService() {
-        return commentService;
-    }
 
     public void setCommentService(CommentService commentService) {
         this.commentService = commentService;
@@ -44,10 +40,6 @@ public class HotelViewBean {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
     public void setHotelService(HotelService hotelService) {
         this.hotelService = hotelService;
     }
@@ -61,24 +53,16 @@ public class HotelViewBean {
     }
 
     public Hotel getHotel() {
-        return hotel = hotelService.getHotel(id);
-    }
-
-    public HotelService getHotelService() {
-        return hotelService;
+        return hotel != null ? hotel : (hotel = hotelService.getHotel(id));
     }
 
     public int getId() {
         return id;
     }
 
-    public String addHotel() {
-        hotelService.addHotel(getHotel());
-        return "index";
-    }
-
     public String updateHotel() {
-        return "";
+        hotelService.updateHotel(getHotel());
+        return "hotel?id=" + id + "&faces-redirect=true";
     }
 
     public String deleteHotel() {

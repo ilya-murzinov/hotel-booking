@@ -14,7 +14,7 @@ import java.util.List;
  */
 @ManagedBean(name = "hotelsListViewBean")
 @ViewScoped
-public class HotelsListViewBean {
+public class HotelsListBean {
     @ManagedProperty(value = "#{hotelServiceImpl}")
     private HotelService hotelService;
     private List<Hotel> list;

@@ -7,7 +7,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
         >
   <f:metadata>
-      <f:viewParam name="id" value="#{hotelViewBean.id}"/>
+      <f:viewParam name="id" value="#{hotelBean.id}"/>
   </f:metadata>
   <h:head>
       <title><ui:insert name="title">Hotel Booking</ui:insert></title>
@@ -23,7 +23,7 @@
           <h:panelGrid columns="3">
 
               Name :
-              <h:inputText id="name" value="#{hotelViewBean.hotel.name}"
+              <h:inputText id="name" value="#{hotelBean.hotel.name}"
                            size="20" required="true"
                            label="Name" >
               </h:inputText>
@@ -31,7 +31,7 @@
               <h:message for="name" style="color:red" />
 
               Address :
-              <h:inputText id="address" value="#{hotelViewBean.hotel.address}"
+              <h:inputText id="address" value="#{hotelBean.hotel.address}"
                            cols="20" required="true"
                            label="Address" >
               </h:inputText>
@@ -39,7 +39,7 @@
               <h:message for="address" style="color:red" />
 
               Phone :
-              <h:inputText id="phone" value="#{hotelViewBean.hotel.phone}"
+              <h:inputText id="phone" value="#{hotelBean.hotel.phone}"
                            size="20" required="true"
                            label="Name" >
               </h:inputText>
@@ -47,7 +47,7 @@
               <h:message for="name" style="color:red" />
 
               Price :
-              <h:inputText id="price" value="#{hotelViewBean.hotel.price}"
+              <h:inputText id="price" value="#{hotelBean.hotel.price}"
                            size="20" required="true"
                            label="Name" >
               </h:inputText>
@@ -56,7 +56,7 @@
 
           </h:panelGrid>
 
-          <h:commandButton value="Save" action="#{hotelViewBean.updateHotel}" rendered="true"/>
+          <h:commandButton value="Save" action="#{hotelBean.updateHotel}" rendered="true"/>
       </h:form>
   </h:body>
 </html>

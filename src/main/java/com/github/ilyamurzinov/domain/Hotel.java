@@ -23,7 +23,7 @@ public class Hotel {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<Comment> comments;
 
     public int getId() {

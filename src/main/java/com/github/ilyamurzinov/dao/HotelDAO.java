@@ -9,11 +9,13 @@ import java.util.List;
  *    Date: 16.06.14
  */
 public interface HotelDAO {
-    public Hotel getHotel(int id);
+    Hotel getHotel(int id);
 
-    public void addHotel(Hotel hotel);
+    void addHotel(Hotel hotel);
 
-    public List<Hotel> listHotel();
+    List<Hotel> listHotel();
 
-    public void removeHotel(int id);
+    void updateHotel(Hotel hotel);
+
+    void removeHotel(int id);
 }

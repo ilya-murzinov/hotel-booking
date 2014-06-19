@@ -19,7 +19,7 @@
     <h:form>
       <h:panelGrid columns="3">
           Name :
-          <h:inputText id="name" value="#{hotelViewBean.hotel.name}"
+          <h:inputText id="name" value="#{addHotelBean.dataModel.name}"
                        size="20" required="true"
                        maxlength="100"
                        label="Name" >
@@ -28,7 +28,7 @@
           <h:message for="name" style="color:red" />
 
           Address :
-          <h:inputText id="address" value="#{hotelViewBean.hotel.address}"
+          <h:inputText id="address" value="#{addHotelBean.dataModel.address}"
                            cols="20" required="true"
                            maxlength="200"
                            label="Address" >
@@ -37,7 +37,7 @@
           <h:message for="address" style="color:red" />
 
           Phone :
-          <h:inputText id="phone" value="#{hotelViewBean.hotel.phone}"
+          <h:inputText id="phone" value="#{addHotelBean.dataModel.phone}"
                        size="20" required="true"
                        label="Phone" >
           </h:inputText>
@@ -45,7 +45,7 @@
           <h:message for="phone" style="color:red" />
 
           Price :
-          <h:inputText id="price" value="#{hotelViewBean.hotel.price}"
+          <h:inputText id="price" value="#{addHotelBean.dataModel.price}"
                        size="20" required="true"
                        label="Price" >
           </h:inputText>
@@ -54,7 +54,7 @@
 
       </h:panelGrid>
 
-      <h:commandButton value="Add" action="#{hotelViewBean.addHotel}" rendered="true"/>
+      <h:commandButton value="Add" action="#{addHotelBean.addHotel}" rendered="true"/>
     </h:form>
   </h:body>
 </html>

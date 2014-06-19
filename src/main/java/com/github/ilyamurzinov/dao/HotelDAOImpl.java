@@ -1,5 +1,6 @@
 package com.github.ilyamurzinov.dao;
 
+import com.github.ilyamurzinov.domain.Comment;
 import com.github.ilyamurzinov.domain.Hotel;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
@@ -20,7 +21,13 @@ public class HotelDAOImpl implements HotelDAO {
 
     @Override
     public Hotel getHotel(int id) {
-        return (Hotel) sessionFactory.getCurrentSession().get(Hotel.class, id);
+        Hotel hotel = (Hotel) sessionFactory.getCurrentSession().get(Hotel.class, id);
+        if (hotel != null) {
+            for (Comment c : hotel.getComments()) {
+                Hibernate.initialize(c);
+            }
+        }
+        return hotel;
     }
 
     @Override
@@ -32,6 +39,11 @@ public class HotelDAOImpl implements HotelDAO {
     @Override
     public List<Hotel> listHotel() {
         return sessionFactory.getCurrentSession().createQuery("from Hotel").list();
+    }
+
+    @Override
+    public void updateHotel(Hotel hotel) {
+        sessionFactory.getCurrentSession().update(hotel);
     }
 
     @Override
