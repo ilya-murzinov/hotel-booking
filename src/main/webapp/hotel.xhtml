@@ -5,6 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:m="http://code.google.com/p/gmaps4jsf/"
         >
 <f:metadata>
     <f:viewParam name="id" value="#{hotelBean.id}"/>
@@ -12,6 +13,9 @@
 <h:head>
     <title><ui:insert name="title">Hotel Booking</ui:insert></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?sensor=true">
+    </script>
 </h:head>
 
 <h:body>
@@ -37,6 +41,14 @@
         </h:button>
         <h:commandButton value="Delete" action="#{hotelBean.deleteHotel}"/>
     </h:form>
+
+    <h:form>
+        <m:map address="#{hotelBean.hotel.address}">
+            <m:marker/>
+            <m:htmlInformationWindow htmlText="#{hotelBean.hotel.address}"/>
+        </m:map>
+    </h:form>
+
     <h:dataTable value="#{hotelBean.hotel.comments}" var="comment">
         <h:column>
             <f:facet name="header">Author</f:facet>
@@ -52,6 +64,7 @@
             </h:form>
         </h:column>
     </h:dataTable>
+
     <h:form>
         <h:panelGrid columns="3">
             <h:outputLabel>Author: </h:outputLabel>

@@ -101,7 +101,7 @@
     <dependency>
       <groupId>com.googlecode.gmaps4jsf</groupId>
       <artifactId>gmaps4jsf-core</artifactId>
-      <version>1.1.1</version>
+      <version>3.0.0</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
