@@ -11,6 +11,12 @@
     <java-version>1.6</java-version>
     <org.springframework-version>4.0.5.RELEASE</org.springframework-version>
   </properties>
+  <repositories>
+    <repository>
+      <id>googlecode.com</id>
+      <url>http://gmaps4jsf.googlecode.com/svn/trunk/gmaps4jsf-repo</url>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>javax.transaction</groupId>
@@ -91,6 +97,11 @@
       <groupId>org.ocpsoft.rewrite</groupId>
       <artifactId>rewrite-config-prettyfaces</artifactId>
       <version>2.0.12.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>com.googlecode.gmaps4jsf</groupId>
+      <artifactId>gmaps4jsf-core</artifactId>
+      <version>1.1.1</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>

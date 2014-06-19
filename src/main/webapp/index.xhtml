@@ -1,37 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-    >
-  <h:head>
-      <title><ui:insert name="title">Hotel Booking</ui:insert></title>
-  </h:head>
+        >
+<h:head>
+    <title><ui:insert name="title">Hotel Booking</ui:insert></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
 
-  <h:body>
+<h:body>
     <h2>
         <ui:insert name="h2">
-          #{hotelsListViewBean.count} hotels available:
+            #{hotelsListViewBean.count} hotels available:
         </ui:insert>
     </h2>
     <h:dataTable value="#{hotelsListViewBean.list}" var="hotel">
         <h:column>
+            <f:facet name="header">Name</f:facet>
             <h:link value="#{hotel.name}" outcome="hotel">
                 <f:param name="id" value="#{hotel.id}"/>
             </h:link>
         </h:column>
         <h:column>
-        #{hotel.address}
+            <f:facet name="header">Address</f:facet>
+            #{hotel.address}
         </h:column>
         <h:column>
-        #{hotel.phone}
+            <f:facet name="header">Phone</f:facet>
+            #{hotel.phone}
         </h:column>
         <h:column>
-        #{hotel.price}
+            <f:facet name="header">Price</f:facet>
+            #{hotel.price}
         </h:column>
     </h:dataTable>
     <h:button value="Add new hotel" outcome="add"/>
-  </h:body>
+</h:body>
 </html>

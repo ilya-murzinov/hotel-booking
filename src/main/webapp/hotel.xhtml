@@ -6,69 +6,72 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
         >
-  <f:metadata>
-      <f:viewParam name="id" value="#{hotelBean.id}"/>
-  </f:metadata>
-  <h:head>
-      <title><ui:insert name="title">Hotel Booking</ui:insert></title>
-  </h:head>
+<f:metadata>
+    <f:viewParam name="id" value="#{hotelBean.id}"/>
+</f:metadata>
+<h:head>
+    <title><ui:insert name="title">Hotel Booking</ui:insert></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
 
-  <h:body>
-      <h:link value="Home" outcome="index"/>
-      <h2>
-          <ui:insert name="h2">
-              #{hotelBean.hotel.name}
-          </ui:insert>
-      </h2>
-      <h:panelGrid columns="2">
-          <h:outputLabel>Name:</h:outputLabel>
-          #{hotelBean.hotel.name}
-          <h:outputLabel>Address:</h:outputLabel>
-          #{hotelBean.hotel.address}
-          <h:outputLabel>Phone:</h:outputLabel>
-          #{hotelBean.hotel.phone}
-          <h:outputLabel>Price:</h:outputLabel>
-          #{hotelBean.hotel.price}
-      </h:panelGrid>
-      <h:form>
+<h:body>
+    <h:link value="Home" outcome="index"/>
+    <h2>
+        <ui:insert name="h2">
+            #{hotelBean.hotel.name}
+        </ui:insert>
+    </h2>
+    <h:panelGrid columns="2">
+        <h:outputLabel>Name:</h:outputLabel>
+        #{hotelBean.hotel.name}
+        <h:outputLabel>Address:</h:outputLabel>
+        #{hotelBean.hotel.address}
+        <h:outputLabel>Phone:</h:outputLabel>
+        #{hotelBean.hotel.phone}
+        <h:outputLabel>Price:</h:outputLabel>
+        #{hotelBean.hotel.price}
+    </h:panelGrid>
+    <h:form>
         <h:button value="Edit" outcome="edit">
             <f:param name="id" value="#{hotelBean.id}"/>
         </h:button>
         <h:commandButton value="Delete" action="#{hotelBean.deleteHotel}"/>
-      </h:form>
-      <h:dataTable value="#{hotelBean.hotel.comments}" var="comment">
+    </h:form>
+    <h:dataTable value="#{hotelBean.hotel.comments}" var="comment">
         <h:column>
-          <ui:insert name="h3">#{comment.author}</ui:insert>
+            <f:facet name="header">Author</f:facet>
+            <ui:insert name="h3">#{comment.author}</ui:insert>
         </h:column>
         <h:column>
+            <f:facet name="header">Comment</f:facet>
             <ui:insert>#{comment.text}</ui:insert>
         </h:column>
         <h:column>
             <h:form>
-              <h:commandLink value="Delete comment" action="#{hotelBean.deleteComment(comment.id)}"/>
+                <h:commandLink value="Delete comment" action="#{hotelBean.deleteComment(comment.id)}"/>
             </h:form>
         </h:column>
-      </h:dataTable>
-      <h:form>
-          <h:panelGrid columns="3">
-          <h:outputLabel>Author: </h:outputLabel>
-          <h:inputText
-                  id="author"
-                  required="true"
-                  maxlength="30"
-                  value="#{hotelBean.commentModel.author}"/>
-          <h:message for="author" style="color:Red"/>
-          <h:outputLabel>Comment: </h:outputLabel>
-          <h:inputTextarea
-                  id="text"
-                  required="true"
-                  maxlength="1000"
-                  value="#{hotelBean.commentModel.text}"/>
-          <h:message for="text" style="color:Red"/>
-          <h:commandButton
-                  value="Add comment"
-                  action="#{hotelBean.addComment}"/>
-          </h:panelGrid>
-      </h:form>
-  </h:body>
+    </h:dataTable>
+    <h:form>
+        <h:panelGrid columns="3">
+            <h:outputLabel>Author: </h:outputLabel>
+            <h:inputText
+                    id="author"
+                    required="true"
+                    maxlength="30"
+                    value="#{hotelBean.commentModel.author}"/>
+            <h:message for="author" style="color:Red"/>
+            <h:outputLabel>Comment: </h:outputLabel>
+            <h:inputTextarea
+                    id="text"
+                    required="true"
+                    maxlength="1000"
+                    value="#{hotelBean.commentModel.text}"/>
+            <h:message for="text" style="color:Red"/>
+            <h:commandButton
+                    value="Add comment"
+                    action="#{hotelBean.addComment}"/>
+        </h:panelGrid>
+    </h:form>
+</h:body>
 </html>

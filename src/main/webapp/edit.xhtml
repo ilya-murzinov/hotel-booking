@@ -6,57 +6,50 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
         >
-  <f:metadata>
-      <f:viewParam name="id" value="#{hotelBean.id}"/>
-  </f:metadata>
-  <h:head>
-      <title><ui:insert name="title">Hotel Booking</ui:insert></title>
-  </h:head>
+<f:metadata>
+    <f:viewParam name="id" value="#{hotelBean.id}"/>
+</f:metadata>
+<h:head>
+    <title><ui:insert name="title">Hotel Booking</ui:insert></title>
+</h:head>
 
-  <h:body>
-      <h2>
-          <ui:insert name="h2">
-              Edit hotel:
-          </ui:insert>
-      </h2>
-      <h:form>
-          <h:panelGrid columns="3">
+<h:body>
+    <h2>
+        <ui:insert name="h2">
+            Edit hotel:
+        </ui:insert>
+    </h2>
+    <h:form>
+        <h:panelGrid columns="3">
+            Name:
+            <h:inputText id="name" value="#{hotelBean.hotel.name}"
+                         size="20" required="true"
+                         label="Name" >
+            </h:inputText>
+            <h:message for="name" style="color:red" />
 
-              Name :
-              <h:inputText id="name" value="#{hotelBean.hotel.name}"
-                           size="20" required="true"
-                           label="Name" >
-              </h:inputText>
+            Address:
+            <h:inputText id="address" value="#{hotelBean.hotel.address}"
+                         cols="20" required="true"
+                         label="Address" >
+            </h:inputText>
+            <h:message for="address" style="color:red" />
 
-              <h:message for="name" style="color:red" />
+            Phone:
+            <h:inputText id="phone" value="#{hotelBean.hotel.phone}"
+                         size="20" required="true"
+                         label="Name" >
+            </h:inputText>
+            <h:message for="name" style="color:red" />
 
-              Address :
-              <h:inputText id="address" value="#{hotelBean.hotel.address}"
-                           cols="20" required="true"
-                           label="Address" >
-              </h:inputText>
-
-              <h:message for="address" style="color:red" />
-
-              Phone :
-              <h:inputText id="phone" value="#{hotelBean.hotel.phone}"
-                           size="20" required="true"
-                           label="Name" >
-              </h:inputText>
-
-              <h:message for="name" style="color:red" />
-
-              Price :
-              <h:inputText id="price" value="#{hotelBean.hotel.price}"
-                           size="20" required="true"
-                           label="Name" >
-              </h:inputText>
-
-              <h:message for="name" style="color:red" />
-
-          </h:panelGrid>
-
-          <h:commandButton value="Save" action="#{hotelBean.updateHotel}" rendered="true"/>
-      </h:form>
-  </h:body>
+            Price:
+            <h:inputText id="price" value="#{hotelBean.hotel.price}"
+                         size="20" required="true"
+                         label="Name" >
+            </h:inputText>
+            <h:message for="name" style="color:red" />
+        </h:panelGrid>
+        <h:commandButton value="Save" action="#{hotelBean.updateHotel}" rendered="true"/>
+    </h:form>
+</h:body>
 </html>
