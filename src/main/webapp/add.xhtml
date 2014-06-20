@@ -19,21 +19,25 @@
                 <h:outputLabel for="name" value="Name:"/>
                 <p:inputText id="name" value="#{addHotelBean.dataModel.name}"
                              size="50" required="true"
-                             maxlength="100" >
+                             maxlength="100"
+                             validatorMessage="Name is required">
                 </p:inputText>
                 <h:outputLabel for="address" value="Address:"/>
                 <p:inputText id="address" value="#{addHotelBean.dataModel.address}"
                              size="50" required="true"
-                             maxlength="200" >
+                             maxlength="200"
+                             validatorMessage="Address is required">
                 </p:inputText>
                 <h:outputLabel for="phone" value="Phone:"/>
                 <p:inputText id="phone" value="#{addHotelBean.dataModel.phone}"
-                             size="20" required="true" >
+                             size="20" required="true"
+                             validatorMessage="Phone is required">
                 </p:inputText>
                 <h:outputLabel for="price" value="Price:"/>
                 <p:inputText id="price" value="#{addHotelBean.dataModel.price}"
-                             size="20" required="true" >
-                    <f:convertNumber/>
+                             size="20" required="true"
+                             validatorMessage="Price should be a number">
+                    <f:validateRegex pattern="\d*"/>
                 </p:inputText>
                 <h:outputLabel for="description" value="Description:"/>
                 <p:inputTextarea id="description" value="#{addHotelBean.dataModel.description}"
