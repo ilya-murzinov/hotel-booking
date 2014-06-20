@@ -5,6 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
         >
 <h:head>
     <title><ui:insert name="title">Hotel Booking</ui:insert></title>
@@ -12,31 +13,32 @@
 </h:head>
 
 <h:body>
-    <h2>
-        <ui:insert name="h2">
-            #{hotelsListViewBean.count} hotels available:
-        </ui:insert>
-    </h2>
-    <h:dataTable value="#{hotelsListViewBean.list}" var="hotel">
-        <h:column>
-            <f:facet name="header">Name</f:facet>
-            <h:link value="#{hotel.name}" outcome="hotel">
-                <f:param name="id" value="#{hotel.id}"/>
-            </h:link>
-        </h:column>
-        <h:column>
-            <f:facet name="header">Address</f:facet>
-            #{hotel.address}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Phone</f:facet>
-            #{hotel.phone}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Price</f:facet>
-            #{hotel.price}
-        </h:column>
-    </h:dataTable>
-    <h:button value="Add new hotel" outcome="add"/>
+    <p:panel header="#{hotelsListViewBean.count} hotels available:">
+        <p:dataTable id="tbl" var="hotel" value="#{hotelsListViewBean.list}"
+                     paginatorTemplate="{CurrentPageReport}
+                     {FirstPageLink} {PreviousPageLink} {PageLinks}
+                     {NextPageLink} {LastPageLink}"
+                     paginator="true" rows="10" style="margin-bottom:20px">
+            <p:column>
+                <f:facet name="header">Name</f:facet>
+                <h:link value="#{hotel.name}" outcome="hotel">
+                    <f:param name="id" value="#{hotel.id}"/>
+                </h:link>
+            </p:column>
+            <p:column>
+                <f:facet name="header">Address</f:facet>
+                #{hotel.address}
+            </p:column>
+            <p:column>
+                <f:facet name="header">Phone</f:facet>
+                #{hotel.phone}
+            </p:column>
+            <p:column>
+                <f:facet name="header">Price</f:facet>
+                #{hotel.price}
+            </p:column>
+        </p:dataTable>
+        <p:button value="Add new hotel" outcome="add"/>
+    </p:panel>
 </h:body>
 </html>

@@ -5,6 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
         >
 <f:metadata>
     <f:viewParam name="id" value="#{hotelBean.id}"/>
@@ -14,42 +15,37 @@
 </h:head>
 
 <h:body>
-    <h2>
-        <ui:insert name="h2">
-            Edit hotel:
-        </ui:insert>
-    </h2>
     <h:form>
-        <h:panelGrid columns="3">
-            Name:
-            <h:inputText id="name" value="#{hotelBean.hotel.name}"
-                         size="20" required="true"
-                         label="Name" >
-            </h:inputText>
-            <h:message for="name" style="color:red" />
-
-            Address:
-            <h:inputText id="address" value="#{hotelBean.hotel.address}"
-                         cols="20" required="true"
-                         label="Address" >
-            </h:inputText>
-            <h:message for="address" style="color:red" />
-
-            Phone:
-            <h:inputText id="phone" value="#{hotelBean.hotel.phone}"
-                         size="20" required="true"
-                         label="Name" >
-            </h:inputText>
-            <h:message for="name" style="color:red" />
-
-            Price:
-            <h:inputText id="price" value="#{hotelBean.hotel.price}"
-                         size="20" required="true"
-                         label="Name" >
-            </h:inputText>
-            <h:message for="name" style="color:red" />
-        </h:panelGrid>
-        <h:commandButton value="Save" action="#{hotelBean.updateHotel}" rendered="true"/>
+        <p:messages autoUpdate="true"/>
+        <p:panel header="Edit hotel &quot;#{hotelBean.hotel.name}&quot;">
+            <h:panelGrid columns="2">
+                <h:outputLabel for="name" value="Name:"/>
+                <p:inputText id="name" value="#{hotelBean.hotel.name}"
+                             size="50" required="true"
+                             maxlength="100" >
+                </p:inputText>
+                <h:outputLabel for="address" value="Address:"/>
+                <p:inputText id="address" value="#{hotelBean.hotel.address}"
+                             size="50" required="true"
+                             maxlength="200" >
+                </p:inputText>
+                <h:outputLabel for="phone" value="Phone:"/>
+                <p:inputText id="phone" value="#{hotelBean.hotel.phone}"
+                             size="20" required="true" >
+                </p:inputText>
+                <h:outputLabel for="price" value="Price:"/>
+                <p:inputText id="price" value="#{hotelBean.hotel.price}"
+                             size="20" required="true" >
+                    <f:convertNumber/>
+                </p:inputText>
+                <h:outputLabel for="description" value="Description:"/>
+                <p:inputTextarea id="description" value="#{hotelBean.hotel.price}"
+                                 size="50" rows="5" >
+                </p:inputTextarea>
+            </h:panelGrid>
+            <p:commandButton value="Save" action="#{hotelBean.updateHotel}" rendered="true"/>
+            <p:commandButton value="Cancel" action="index?faces-redirect=true" rendered="true" immediate="true"/>
+        </p:panel>
     </h:form>
 </h:body>
 </html>

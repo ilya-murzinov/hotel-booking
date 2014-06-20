@@ -11,19 +11,20 @@ CREATE TABLE hotel
    name VARCHAR(100),
    address VARCHAR(200),
    phone VARCHAR(15),
-   price DOUBLE
+   price DOUBLE,
+   description VARCHAR(1000)
 );
 
-INSERT INTO hotel (name, address, phone, price)
-values ("Holiday Inn Paris Saint Germain des Prés", "92, rue de Vaugirard, 6th arr. - Saint Germain, 75006 Paris", "7777777", "1000.0");
-INSERT INTO hotel (name, address, phone, price)
-values ("Best Western Premier Louvre Saint-Honoré", "141, rue St Honoré, 1st arr. - Louvre, 75001 Paris", "7777778", "2000.0");
-INSERT INTO hotel (name, address, phone, price)
-values ("Hôtel R de Paris", "41 rue de Clichy, 9th arr. - Opéra, 75009 Paris", "7777779", "3000.0");
-INSERT INTO hotel (name, address, phone, price)
-values ("SAINT JAMES ALBANY PARIS HOTEL SPA", "202, rue de Rivoli, 1st arr. - Louvre, 75001 Paris", "7777770", "4000.0");
-INSERT INTO hotel (name, address, phone, price)
-values ("Hôtel les Degrés de Notre Dame", "0 rue des Grands Degrés, 5th arr. - Quartier Latin, 75005 Paris", "7777771", "5000.0");
+INSERT INTO hotel (name, address, phone, price, description)
+values ("Holiday Inn Paris Saint Germain des Prés", "92, rue de Vaugirard, 6th arr. - Saint Germain, 75006 Paris", "7777777", "1000.0", "description1");
+INSERT INTO hotel (name, address, phone, price, description)
+values ("Best Western Premier Louvre Saint-Honoré", "141, rue St Honoré, 1st arr. - Louvre, 75001 Paris", "7777778", "2000.0", "description1");
+INSERT INTO hotel (name, address, phone, price, description)
+values ("Hôtel R de Paris", "41 rue de Clichy, 9th arr. - Opéra, 75009 Paris", "7777779", "3000.0", "description1");
+INSERT INTO hotel (name, address, phone, price, description)
+values ("SAINT JAMES ALBANY PARIS HOTEL SPA", "202, rue de Rivoli, 1st arr. - Louvre, 75001 Paris", "7777770", "4000.0", "description1");
+INSERT INTO hotel (name, address, phone, price, description)
+values ("Hôtel les Degrés de Notre Dame", "0 rue des Grands Degrés, 5th arr. - Quartier Latin, 75005 Paris", "7777771", "5000.0", "description1");
 
 CREATE TABLE comment
 (

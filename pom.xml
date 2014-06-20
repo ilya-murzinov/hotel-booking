@@ -99,6 +99,11 @@
       <version>2.0.12.Final</version>
     </dependency>
     <dependency>
+      <groupId>org.primefaces</groupId>
+      <artifactId>primefaces</artifactId>
+      <version>5.0</version>
+    </dependency>
+    <dependency>
       <groupId>com.googlecode.gmaps4jsf</groupId>
       <artifactId>gmaps4jsf-core</artifactId>
       <version>3.0.0</version>

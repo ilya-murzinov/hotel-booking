@@ -23,6 +23,9 @@ public class Hotel {
     @Column(name = "phone")
     private String phone;
 
+    @Column(name = "description")
+    private String description;
+
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<Comment> comments;
 
@@ -50,6 +53,10 @@ public class Hotel {
         return comments;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -72,5 +79,9 @@ public class Hotel {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
