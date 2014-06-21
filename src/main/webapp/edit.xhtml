@@ -36,7 +36,7 @@
                              size="20" required="true"
                              validatorMessage="Phone is required">
                 </p:inputText>
-                <h:outputLabel for="price" value="Price:"/>
+                <h:outputLabel for="price" value="Price per night:"/>
                 <p:inputText id="price" value="#{hotelBean.hotel.price}"
                              size="20" required="true"
                              validatorMessage="Price should be a number">
@@ -44,7 +44,7 @@
                 </p:inputText>
                 <h:outputLabel for="description" value="Description:"/>
                 <p:inputTextarea id="description" value="#{hotelBean.hotel.description}"
-                                 size="50" rows="5">
+                                 cols="50" rows="5">
                 </p:inputTextarea>
             </h:panelGrid>
             <p:commandButton value="Save" action="#{hotelBean.updateHotel}" rendered="true"/>

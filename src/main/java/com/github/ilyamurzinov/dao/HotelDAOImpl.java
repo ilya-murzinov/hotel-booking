@@ -41,6 +41,13 @@ public class HotelDAOImpl implements HotelDAO {
         return sessionFactory.getCurrentSession().createQuery("from Hotel").list();
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Hotel> listHotel(String name) {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from Hotel where name like '%" + name + "%'").list();
+    }
+
     @Override
     public void updateHotel(Hotel hotel) {
         sessionFactory.getCurrentSession().update(hotel);

@@ -23,15 +23,9 @@
     <h:form>
         <p:toolbar>
             <f:facet name="left">
-                <h:outputText value="#{hotelBean.hotel.name}"
-                              style="font-weight:bold;margin-right:10px"/>
-                <p:button value="Edit" outcome="edit" rendered="#{userBean.admin}">
-                    <f:param name="id" value="#{hotelBean.id}"/>
-                </p:button>
-                <p:commandButton value="Delete"
-                                 rendered="#{userBean.admin}"
-                                 action="#{hotelBean.deleteHotel}"
-                                 style="background-color:red"/>
+                <h2>
+                    <h:outputText value="Hotel Booking Service" style="font-weight:bold"/>
+                </h2>
             </f:facet>
             <f:facet name="right">
                 <p:button value="Home"
@@ -47,22 +41,30 @@
             </f:facet>
         </p:toolbar>
         <p:panel>
+            <h2>
+                <h:outputText value="#{hotelBean.hotel.name}" style="font-weight:bold"/>
+            </h2>
             <p:commandButton value="Book this hotel!"
                              onclick="PF('dialog').show();"
                              style="margin-bottom:10px;background-color:green"/>
-
+            <p:button value="Edit" outcome="edit" rendered="#{userBean.admin}">
+                <f:param name="id" value="#{hotelBean.id}"/>
+            </p:button>
+            <p:commandButton value="Delete"
+                             rendered="#{userBean.admin}"
+                             action="#{hotelBean.deleteHotel}"
+                             style="background-color:red"/>
             <p:panelGrid columns="2" style="margin-bottom: 10px;">
-                <h:outputLabel>Name:</h:outputLabel>
-                <h:outputText value="#{hotelBean.hotel.name}" style="font-weight:bold"/>
                 <h:outputLabel>Address:</h:outputLabel>
                 <h:outputText value="#{hotelBean.hotel.address}" style="font-weight:bold"/>
                 <h:outputLabel>Phone:</h:outputLabel>
                 <h:outputText value="#{hotelBean.hotel.phone}" style="font-weight:bold"/>
-                <h:outputLabel>Price:</h:outputLabel>
+                <h:outputLabel>Price per night:</h:outputLabel>
                 <h:outputText value="#{hotelBean.hotel.price}" style="font-weight:bold"/>
-                <h:outputLabel>Description:</h:outputLabel>
-                <h:outputText value="#{hotelBean.hotel.description}" style="font-weight:bold"/>
             </p:panelGrid>
+            <p>
+                #{hotelBean.hotel.description}
+            </p>
 
             <m:map address="#{hotelBean.hotel.address}">
                 <m:marker/>
@@ -71,7 +73,7 @@
 
             <p:commandButton value="Book this hotel!"
                              onclick="PF('dialog').show();"
-                             style="margin-bottom:10px;background-color:green"/>
+                             style="margin-top:10px;background-color:green"/>
         </p:panel>
         <p:dialog header="Booking"
                   widgetVar="dialog"

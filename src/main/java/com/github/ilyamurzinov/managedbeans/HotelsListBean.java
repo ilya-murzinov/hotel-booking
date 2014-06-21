@@ -19,6 +19,7 @@ public class HotelsListBean {
     private HotelService hotelService;
     private List<Hotel> list;
     private int count;
+    private String searchCriteria;
 
     public HotelService getHotelService() {
         return hotelService;
@@ -29,10 +30,22 @@ public class HotelsListBean {
     }
 
     public List<Hotel> getList() {
-        return hotelService.listHotel();
+        return list != null ? list : (list = hotelService.listHotel());
     }
 
     public int getCount() {
-        return hotelService.listHotel().size();
+        return getList().size();
+    }
+
+    public String getSearchCriteria() {
+        return searchCriteria;
+    }
+
+    public void setSearchCriteria(String searchCriteria) {
+        this.searchCriteria = searchCriteria;
+    }
+
+    public void search() {
+        list = hotelService.listHotel(searchCriteria);
     }
 }

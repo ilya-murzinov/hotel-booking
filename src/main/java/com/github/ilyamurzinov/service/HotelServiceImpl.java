@@ -37,6 +37,12 @@ public class HotelServiceImpl implements HotelService {
 
     @Transactional
     @Override
+    public List<Hotel> listHotel(String name) {
+        return hotelDAO.listHotel(name);
+    }
+
+    @Transactional
+    @Override
     public void updateHotel(Hotel hotel) {
         hotelDAO.updateHotel(hotel);
     }
