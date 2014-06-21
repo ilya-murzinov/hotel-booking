@@ -17,9 +17,7 @@ import java.util.List;
 public class HotelsListBean {
     @ManagedProperty(value = "#{hotelServiceImpl}")
     private HotelService hotelService;
-    @SuppressWarnings("usused")
     private List<Hotel> list;
-    @SuppressWarnings("usused")
     private int count;
 
     public HotelService getHotelService() {

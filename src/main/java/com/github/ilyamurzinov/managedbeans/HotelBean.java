@@ -4,6 +4,8 @@ import com.github.ilyamurzinov.domain.Comment;
 import com.github.ilyamurzinov.domain.Hotel;
 import com.github.ilyamurzinov.service.CommentService;
 import com.github.ilyamurzinov.service.HotelService;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 
 import javax.faces.bean.*;
 import java.util.List;
@@ -19,14 +21,12 @@ public class HotelBean {
     private HotelService hotelService;
     @ManagedProperty(value = "#{commentServiceImpl}")
     private CommentService commentService;
+    @ManagedProperty(value = "#{userBean}")
+    private UserBean user;
     private int id;
     private Hotel hotel;
     private List<Comment> comments;
     private Comment commentModel = new Comment();
-
-    public void setCommentService(CommentService commentService) {
-        this.commentService = commentService;
-    }
 
     public Comment getCommentModel() {
         return commentModel;
@@ -36,12 +36,16 @@ public class HotelBean {
         this.commentModel = commentModel;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
-
     public void setHotelService(HotelService hotelService) {
         this.hotelService = hotelService;
+    }
+
+    public void setCommentService(CommentService commentService) {
+        this.commentService = commentService;
+    }
+
+    public void setUser(UserBean user) {
+        this.user = user;
     }
 
     public void setHotel(Hotel hotel) {
@@ -76,6 +80,9 @@ public class HotelBean {
     public String addComment() {
         Comment comment = getCommentModel();
         comment.setHotel(getHotel());
+        if (user.isUser()) {
+            comment.setAuthor(user.getUserName());
+        }
         commentService.addComment(comment);
         return "hotel?id=" + id + "&faces-redirect=true";
     }

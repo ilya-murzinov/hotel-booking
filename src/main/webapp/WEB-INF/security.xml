@@ -1,0 +1,29 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+                 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                 http://www.springframework.org/schema/security
+                 http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+
+  <http access-denied-page="/faces/error403.xhtml">
+    <intercept-url pattern="/index*" access="ROLE_USER,ROLE_ANONYMOUS"/>
+    <intercept-url pattern="/add*" access="ROLE_USER"/>
+    <intercept-url pattern="/delete/*" access="ROLE_USER"/>
+    <form-login login-page="/faces/login.xhtml"
+                default-target-url="/index"
+                authentication-failure-url="/faces/login.xhtml?error=true"/>
+    <logout logout-url="/logout" logout-success-url="/index"/>
+    <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
+    <remember-me/>
+  </http>
+
+  <authentication-manager>
+    <authentication-provider>
+      <user-service>
+        <user name="admin" password="admin" authorities="ROLE_USER"/>
+      </user-service>
+    </authentication-provider>
+  </authentication-manager>
+</beans:beans>

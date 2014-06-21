@@ -58,7 +58,9 @@
                     #{comment.text}
                 </h:column>
                 <h:column>
-                    <h:commandLink value="Delete" action="#{hotelBean.deleteComment(comment.id)}"/>
+                    <h:commandLink value="Delete"
+                                   action="#{hotelBean.deleteComment(comment.id)}"
+                                   rendered="#{userBean.userName.equals(comment.author)}"/>
                 </h:column>
             </h:dataTable>
         </h:form>
@@ -70,7 +72,11 @@
                         size="20"
                         required="true"
                         maxlength="30"
+                        rendered="#{userBean.guest}"
                         value="#{hotelBean.commentModel.author}"/>
+                <h:outputText value="#{userBean.userName}"
+                              rendered="#{userBean.user}"
+                              style="font-weight:bold"/>
                 <h:outputLabel>Comment: </h:outputLabel>
                 <p:inputTextarea
                         id="text"
