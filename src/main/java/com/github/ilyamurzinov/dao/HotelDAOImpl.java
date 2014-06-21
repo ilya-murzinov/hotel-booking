@@ -38,14 +38,14 @@ public class HotelDAOImpl implements HotelDAO {
     @SuppressWarnings("unchecked")
     @Override
     public List<Hotel> listHotel() {
-        return sessionFactory.getCurrentSession().createQuery("from Hotel").list();
+        return sessionFactory.getCurrentSession().createQuery("from Hotel order by size(comments) desc").list();
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public List<Hotel> listHotel(String name) {
         return sessionFactory.getCurrentSession()
-                .createQuery("from Hotel where name like '%" + name + "%'").list();
+                .createQuery("from Hotel where name like '%" + name + "%' order by size(comments) desc").list();
     }
 
     @Override
