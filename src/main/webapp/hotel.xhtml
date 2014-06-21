@@ -25,10 +25,11 @@
             <f:facet name="left">
                 <h:outputText value="#{hotelBean.hotel.name}"
                               style="font-weight:bold;margin-right:10px"/>
-                <p:button value="Edit" outcome="edit">
+                <p:button value="Edit" outcome="edit" rendered="#{userBean.admin}">
                     <f:param name="id" value="#{hotelBean.id}"/>
                 </p:button>
                 <p:commandButton value="Delete"
+                                 rendered="#{userBean.admin}"
                                  action="#{hotelBean.deleteHotel}"
                                  style="background-color:red"/>
             </f:facet>

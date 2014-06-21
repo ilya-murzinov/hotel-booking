@@ -34,7 +34,9 @@
     </h:form>
     <h:form>
         <p:panel header="#{hotelsListViewBean.count} hotels available:">
-            <p:button value="Add new hotel" outcome="add" style="margin-bottom:10px"/>
+            <p:button value="Add new hotel"
+                      outcome="add" style="margin-bottom:10px"
+                      rendered="#{userBean.admin}"/>
             <p:dataScroller value="#{hotelsListViewBean.list}"
                             var="hotel"
                             chunkSize="10"
