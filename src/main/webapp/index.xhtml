@@ -14,6 +14,25 @@
 
 <h:body>
     <h:form>
+        <p:toolbar>
+            <f:facet name="left">
+                <h2>
+                    <h:outputText value="Hotel Booking Service" style="font-weight:bold"/>
+                </h2>
+            </f:facet>
+            <f:facet name="right">
+                <p:commandButton rendered="#{userBean.guest}"
+                                 value="Login"
+                                 action="login"
+                                 style="background-color:green"/>
+                <h:outputLink value="/j_spring_security_logout"
+                              rendered="#{userBean.user}">
+                    Logout
+                </h:outputLink>
+            </f:facet>
+        </p:toolbar>
+    </h:form>
+    <h:form>
         <p:panel header="#{hotelsListViewBean.count} hotels available:">
             <p:button value="Add new hotel" outcome="add" style="margin-bottom:10px"/>
             <p:dataScroller value="#{hotelsListViewBean.list}"

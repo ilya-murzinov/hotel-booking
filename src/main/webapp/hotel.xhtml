@@ -21,15 +21,35 @@
 
 <h:body>
     <h:form>
-        <p:panel header="#{hotelBean.hotel.name}">
-            <f:facet name="actions">
+        <p:toolbar>
+            <f:facet name="left">
+                <h:outputText value="#{hotelBean.hotel.name}"
+                              style="font-weight:bold;margin-right:10px"/>
                 <p:button value="Edit" outcome="edit">
                     <f:param name="id" value="#{hotelBean.id}"/>
                 </p:button>
-                <p:commandButton value="Delete" action="#{hotelBean.deleteHotel}"/>
+                <p:commandButton value="Delete"
+                                 action="#{hotelBean.deleteHotel}"
+                                 style="background-color:red"/>
+            </f:facet>
+            <f:facet name="right">
                 <p:button value="Home"
                           outcome="index"/>
+                <p:commandButton rendered="#{userBean.guest}"
+                                 value="Login"
+                                 action="login"
+                                 style="background-color:green"/>
+                <h:outputLink value="/j_spring_security_logout"
+                              rendered="#{userBean.user}">
+                    Logout
+                </h:outputLink>
             </f:facet>
+        </p:toolbar>
+        <p:panel>
+            <p:commandButton value="Book this hotel!"
+                             onclick="PF('dialog').show();"
+                             style="margin-bottom:10px;background-color:green"/>
+
             <p:panelGrid columns="2" style="margin-bottom: 10px;">
                 <h:outputLabel>Name:</h:outputLabel>
                 <h:outputText value="#{hotelBean.hotel.name}" style="font-weight:bold"/>
@@ -47,7 +67,40 @@
                 <m:marker/>
                 <m:htmlInformationWindow htmlText="#{hotelBean.hotel.address}"/>
             </m:map>
+
+            <p:commandButton value="Book this hotel!"
+                             onclick="PF('dialog').show();"
+                             style="margin-bottom:10px;background-color:green"/>
         </p:panel>
+        <p:dialog header="Booking"
+                  widgetVar="dialog"
+                  resizable="false"
+                  modal="true">
+            <h:panelGrid columns="2">
+                <h:outputLabel for="phone" value="Phone:" />
+                <p:inputText id="phone" label="phone" />
+                <h:outputLabel for="email" value="E-mail:" />
+                <p:password id="email" label="email" />
+                <f:facet name="footer">
+                    <p:commandButton value="OK"
+                                     oncomplete="PF('dialog').hide();PF('thanks-dialog').show();" />
+                    <p:commandButton value="Cancel"
+                                     oncomplete="PF('dialog').hide();" />
+                </f:facet>
+            </h:panelGrid>
+        </p:dialog>
+        <p:dialog header="Thanks!"
+                  widgetVar="thanks-dialog"
+                  resizable="false"
+                  modal="true">
+            <h:panelGrid columns="2">
+                <h:outputText value="Thank you! We will call you back as soon as possible!"/>
+                <f:facet name="footer">
+                    <p:commandButton value="OK"
+                                     oncomplete="PF('thanks-dialog').hide();" />
+                </f:facet>
+            </h:panelGrid>
+        </p:dialog>
     </h:form>
 
     <p:panel header="Comments">
@@ -91,5 +144,6 @@
             </h:panelGrid>
         </h:form>
     </p:panel>
+
 </h:body>
 </html>
