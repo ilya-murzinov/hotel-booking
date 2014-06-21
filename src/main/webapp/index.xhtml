@@ -10,19 +10,17 @@
 <h:head>
     <title><ui:insert name="title">Hotel Booking</ui:insert></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <h:outputStylesheet library="css" name="styles.css" />
 </h:head>
 
 <h:body>
     <h:form>
         <p:toolbar style="text-align:center">
             <f:facet name="left">
-                <h2>
-                    <h:outputText value="Hotel Booking Service" style="font-weight:bold"/>
-                </h2>
+                <h:outputText value="Hotel Booking Service" style="font-weight:bold;margin-right:10px"/>
             </f:facet>
             <f:facet name="right">
-                <p:button value="Home"
-                          outcome="index"/>
+                <h:outputText value="You are logged in as #{userBean.userName}"/>
                 <p:commandButton rendered="#{userBean.guest}"
                                  value="Login"
                                  action="login"

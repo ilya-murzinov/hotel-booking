@@ -17,19 +17,18 @@
     <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js">
     </script>
+    <h:outputStylesheet library="css" name="styles.css" />
 </h:head>
 
 <h:body>
     <h:form>
         <p:toolbar>
             <f:facet name="left">
-                <h2>
-                    <h:outputText value="Hotel Booking Service" style="font-weight:bold"/>
-                </h2>
-            </f:facet>
-            <f:facet name="right">
                 <p:button value="Home"
                           outcome="index"/>
+            </f:facet>
+            <f:facet name="right">
+                <h:outputText value="You are logged in as #{userBean.userName}"/>
                 <p:commandButton rendered="#{userBean.guest}"
                                  value="Login"
                                  action="login"

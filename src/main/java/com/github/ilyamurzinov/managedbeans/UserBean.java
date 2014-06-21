@@ -39,7 +39,7 @@ public class UserBean {
     }
 
     public String getUserName() {
-        String name = "none";
+        String name = "guest";
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             name = auth.getName();
