@@ -54,18 +54,18 @@
                 </f:facet>
                 <p:outputPanel>
                     <p:panel style="margin-bottom:5px">
-                        <h:panelGrid columns="2">
-                            <h:outputLabel value="Name:"/>
-                            <h:outputLink value="hotel/#{hotel.id}" style="font-weight:bold">
+                        <h:outputLink value="hotel/#{hotel.id}" style="font-weight:bold">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Name:"/>
                                 #{hotel.name}
-                            </h:outputLink>
-                            <h:outputLabel value="Address:"/>
-                            <h:outputText value="#{hotel.address}" style="font-weight:bold"/>
-                            <h:outputLabel value="Phone:"/>
-                            <h:outputText value="#{hotel.phone}" style="font-weight:bold"/>
-                            <h:outputLabel value="Price per night:"/>
-                            <h:outputText value="#{hotel.price}" style="font-weight:bold"/>
-                        </h:panelGrid>
+                                <h:outputLabel value="Address:"/>
+                                <h:outputText value="#{hotel.address}" style="font-weight:bold"/>
+                                <h:outputLabel value="Phone:"/>
+                                <h:outputText value="#{hotel.phone}" style="font-weight:bold"/>
+                                <h:outputLabel value="Price per night:"/>
+                                <h:outputText value="#{hotel.price}" style="font-weight:bold"/>
+                            </h:panelGrid>
+                        </h:outputLink>
                     </p:panel>
                 </p:outputPanel>
             </p:dataScroller>
