@@ -13,32 +13,35 @@
 </h:head>
 
 <h:body>
-    <p:panel header="#{hotelsListViewBean.count} hotels available:">
-        <p:dataTable id="tbl" var="hotel" value="#{hotelsListViewBean.list}"
-                     paginatorTemplate="{CurrentPageReport}
-                     {FirstPageLink} {PreviousPageLink} {PageLinks}
-                     {NextPageLink} {LastPageLink}"
-                     paginator="true" rows="10" style="margin-bottom:20px">
-            <p:column>
-                <f:facet name="header">Name</f:facet>
-                <h:link value="#{hotel.name}" outcome="hotel">
-                    <f:param name="id" value="#{hotel.id}"/>
-                </h:link>
-            </p:column>
-            <p:column>
-                <f:facet name="header">Address</f:facet>
-                #{hotel.address}
-            </p:column>
-            <p:column>
-                <f:facet name="header">Phone</f:facet>
-                #{hotel.phone}
-            </p:column>
-            <p:column>
-                <f:facet name="header">Price</f:facet>
-                #{hotel.price}
-            </p:column>
-        </p:dataTable>
-        <p:button value="Add new hotel" outcome="add"/>
-    </p:panel>
+    <h:form>
+        <p:panel header="#{hotelsListViewBean.count} hotels available:">
+            <p:button value="Add new hotel" outcome="add" style="margin-bottom:10px"/>
+            <p:dataScroller value="#{hotelsListViewBean.list}"
+                            var="hotel"
+                            chunkSize="10"
+                            style="margin-bottom:10px;margin-top:10px">
+                <f:facet name="loader">
+                    <p:commandButton type="button" value="More" icon="ui-icon-circle-triangle-s"/>
+                </f:facet>
+                <p:outputPanel>
+                    <p:panel style="margin-bottom:5px">
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Name:"/>
+                            <h:outputLink value="hotel/#{hotel.id}" style="font-weight:bold">
+                                #{hotel.name}
+                            </h:outputLink>
+                            <h:outputLabel value="Address:"/>
+                            <h:outputText value="#{hotel.address}" style="font-weight:bold"/>
+                            <h:outputLabel value="Phone:"/>
+                            <h:outputText value="#{hotel.phone}" style="font-weight:bold"/>
+                            <h:outputLabel value="Price:"/>
+                            <h:outputText value="#{hotel.price}" style="font-weight:bold"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:outputPanel>
+            </p:dataScroller>
+            <p:button value="Add new hotel" outcome="add" style="margin-top:10px"/>
+        </p:panel>
+    </h:form>
 </h:body>
 </html>

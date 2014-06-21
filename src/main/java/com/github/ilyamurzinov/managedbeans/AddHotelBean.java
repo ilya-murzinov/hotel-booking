@@ -1,4 +1,4 @@
-package com.github.ilyamurzinov.managedBeans;
+package com.github.ilyamurzinov.managedbeans;
 
 import com.github.ilyamurzinov.domain.Hotel;
 import com.github.ilyamurzinov.service.HotelService;
@@ -21,7 +21,10 @@ public class AddHotelBean {
     }
 
     public Hotel getDataModel() {
-        return dataModel != null ? dataModel : (dataModel = new Hotel());
+        if (dataModel == null) {
+            dataModel = new Hotel();
+        }
+        return dataModel;
     }
 
     public String addHotel() {

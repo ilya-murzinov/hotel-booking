@@ -1,4 +1,4 @@
-package com.github.ilyamurzinov.managedBeans;
+package com.github.ilyamurzinov.managedbeans;
 
 import com.github.ilyamurzinov.domain.Hotel;
 import com.github.ilyamurzinov.service.HotelService;
@@ -17,7 +17,9 @@ import java.util.List;
 public class HotelsListBean {
     @ManagedProperty(value = "#{hotelServiceImpl}")
     private HotelService hotelService;
+    @SuppressWarnings("usused")
     private List<Hotel> list;
+    @SuppressWarnings("usused")
     private int count;
 
     public HotelService getHotelService() {

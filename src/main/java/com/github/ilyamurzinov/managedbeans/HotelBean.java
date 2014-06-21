@@ -1,4 +1,4 @@
-package com.github.ilyamurzinov.managedBeans;
+package com.github.ilyamurzinov.managedbeans;
 
 import com.github.ilyamurzinov.domain.Comment;
 import com.github.ilyamurzinov.domain.Hotel;
@@ -53,7 +53,10 @@ public class HotelBean {
     }
 
     public Hotel getHotel() {
-        return hotel != null ? hotel : (hotel = hotelService.getHotel(id));
+        if (hotel == null) {
+            hotel = hotelService.getHotel(id);
+        }
+        return hotel;
     }
 
     public int getId() {

@@ -32,15 +32,15 @@
             </f:facet>
             <p:panelGrid columns="2" style="margin-bottom: 10px;">
                 <h:outputLabel>Name:</h:outputLabel>
-                #{hotelBean.hotel.name}
+                <h:outputText value="#{hotelBean.hotel.name}" style="font-weight:bold"/>
                 <h:outputLabel>Address:</h:outputLabel>
-                #{hotelBean.hotel.address}
+                <h:outputText value="#{hotelBean.hotel.address}" style="font-weight:bold"/>
                 <h:outputLabel>Phone:</h:outputLabel>
-                #{hotelBean.hotel.phone}
+                <h:outputText value="#{hotelBean.hotel.phone}" style="font-weight:bold"/>
                 <h:outputLabel>Price:</h:outputLabel>
-                #{hotelBean.hotel.price}
+                <h:outputText value="#{hotelBean.hotel.price}" style="font-weight:bold"/>
                 <h:outputLabel>Description:</h:outputLabel>
-                #{hotelBean.hotel.description}
+                <h:outputText value="#{hotelBean.hotel.description}" style="font-weight:bold"/>
             </p:panelGrid>
 
             <m:map address="#{hotelBean.hotel.address}">
@@ -51,18 +51,18 @@
     </h:form>
 
     <p:panel header="Comments">
-        <h:dataTable value="#{hotelBean.hotel.comments}" var="comment">
-            <h:column>
-                <h:outputLabel style="font-weight:bold">#{comment.author} :</h:outputLabel>
-                #{comment.text}
-            </h:column>
-            <h:column>
-                <h:form>
+        <h:form id="comments">
+            <h:dataTable id="comment-table" value="#{hotelBean.hotel.comments}" var="comment">
+                <h:column>
+                    <h:outputLabel style="font-weight:bold">#{comment.author} :</h:outputLabel>
+                    #{comment.text}
+                </h:column>
+                <h:column>
                     <h:commandLink value="Delete" action="#{hotelBean.deleteComment(comment.id)}"/>
-                </h:form>
-            </h:column>
-        </h:dataTable>
-        <h:form>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        <h:form id="add-comment">
             <h:panelGrid columns="2">
                 <h:outputLabel>Author: </h:outputLabel>
                 <p:inputText
