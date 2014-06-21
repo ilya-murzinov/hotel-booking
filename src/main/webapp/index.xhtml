@@ -40,8 +40,9 @@
             <h:outputLabel value="Name:"/>
             <p:inputText value="#{hotelsListViewBean.searchCriteria}"/>
             <p:commandButton value="Search"
-                             update="scroller"
+                             update="scroller, counter"
                              actionListener="#{hotelsListViewBean.search}"/>
+            <h:outputText value="#{hotelsListViewBean.count} results" id="counter"/>
             <p:dataScroller id="scroller" value="#{hotelsListViewBean.list}"
                             var="hotel"
                             chunkSize="10"
@@ -53,11 +54,10 @@
                                      icon="ui-icon-circle-triangle-s"/>
                 </f:facet>
                 <p:outputPanel>
-                    <p:panel style="margin-bottom:5px">
-                        <h:outputLink value="hotel/#{hotel.id}" style="font-weight:bold">
+                    <p:panel styleClass="menu-item">
+                        <h:outputLink value="hotel/#{hotel.id}">
+                            <h:outputText value="#{hotel.name}" style="font-weight:bold"/>
                             <h:panelGrid columns="2">
-                                <h:outputLabel value="Name:"/>
-                                #{hotel.name}
                                 <h:outputLabel value="Address:"/>
                                 <h:outputText value="#{hotel.address}" style="font-weight:bold"/>
                                 <h:outputLabel value="Phone:"/>

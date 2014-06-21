@@ -3,3 +3,7 @@ body {
     max-width:800px;
     margin:auto
 }
+
+.menu-item {
+    margin-bottom:5px;
+}
