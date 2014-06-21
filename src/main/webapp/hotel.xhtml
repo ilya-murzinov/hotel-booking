@@ -81,7 +81,7 @@
                 <h:outputLabel for="phone" value="Phone:" />
                 <p:inputText id="phone" label="phone" />
                 <h:outputLabel for="email" value="E-mail:" />
-                <p:password id="email" label="email" />
+                <p:inputText id="email" label="email" />
                 <f:facet name="footer">
                     <p:commandButton value="OK"
                                      oncomplete="PF('dialog').hide();PF('thanks-dialog').show();" />
@@ -114,7 +114,7 @@
                 <h:column>
                     <h:commandLink value="Delete"
                                    action="#{hotelBean.deleteComment(comment.id)}"
-                                   rendered="#{userBean.userName.equals(comment.author)}"/>
+                                   rendered="#{userBean.userName.equals(comment.author) || userBean.admin}"/>
                 </h:column>
             </h:dataTable>
         </h:form>
