@@ -11,6 +11,7 @@
     <intercept-url pattern="/index*" access="ROLE_USER,ROLE_ANONYMOUS,ROLE_ADMIN"/>
     <intercept-url pattern="/hotel*" access="ROLE_USER,ROLE_ANONYMOUS,ROLE_ADMIN"/>
     <intercept-url pattern="/add*" access="ROLE_ADMIN"/>
+    <intercept-url pattern="/edit*" access="ROLE_ADMIN"/>
     <form-login login-page="/faces/login.xhtml"
                 default-target-url="/index"
                 authentication-failure-url="/faces/login.xhtml?error=true"/>
