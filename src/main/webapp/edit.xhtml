@@ -35,6 +35,7 @@
                 <h:outputLabel for="phone" value="Phone:"/>
                 <p:inputText id="phone" value="#{hotelBean.hotel.phone}"
                              size="20" required="true"
+                             maxlength="15"
                              validatorMessage="Phone is required">
                 </p:inputText>
                 <h:outputLabel for="price" value="Price per night:"/>
@@ -45,7 +46,7 @@
                 </p:inputText>
                 <h:outputLabel for="description" value="Description:"/>
                 <p:inputTextarea id="description" value="#{hotelBean.hotel.description}"
-                                 cols="50" rows="5">
+                                 cols="50" rows="5" maxlength="5000">
                 </p:inputTextarea>
             </h:panelGrid>
             <p:commandButton value="Save" action="#{hotelBean.updateHotel}" rendered="true"/>
