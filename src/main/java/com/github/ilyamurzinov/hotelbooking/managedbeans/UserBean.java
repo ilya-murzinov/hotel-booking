@@ -12,7 +12,7 @@ import javax.faces.bean.SessionScoped;
  * @author Ilya Murzinov
  *         Date: 21.06.14
  */
-@ManagedBean(name = "userBean")
+@ManagedBean
 @SessionScoped
 public class UserBean {
     public boolean isGuest() {

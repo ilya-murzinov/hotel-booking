@@ -36,7 +36,7 @@
 
         <!-- Panel with p:dataScroller (list of hotels), search panel and "Add hotel" buttons -->
         <h:form>
-            <p:panel header="#{hotelsListViewBean.count} hotels in database">
+            <p:panel header="#{hotelsListBean.count} hotels in database">
                 <!-- Visible only for ROLE_ADMIN -->
                 <p:button value="Add new hotel"
                           outcome="add" style="margin-bottom:10px"
@@ -45,20 +45,20 @@
                 <h:outputLabel value="Name:"/>
 
                 <!-- Search panel -->
-                <p:inputText value="#{hotelsListViewBean.searchCriteria}"/>
+                <p:inputText value="#{hotelsListBean.searchCriteria}"/>
                 <p:commandButton value="Search"
                                  update="scroller, counter"
-                                 actionListener="#{hotelsListViewBean.search}"/>
-                <h:outputText value="#{hotelsListViewBean.count} results" id="counter"/>
+                                 actionListener="#{hotelsListBean.search}"/>
+                <h:outputText value="#{hotelsListBean.count} results" id="counter"/>
 
-                <p:dataScroller id="scroller" value="#{hotelsListViewBean.list}"
+                <p:dataScroller id="scroller" value="#{hotelsListBean.list}"
                                 var="hotel"
                                 chunkSize="10"
                                 style="margin-bottom:10px;margin-top:10px">
                     <f:facet name="loader">
                         <!-- "More" button is visible only if there is more than 10 results -->
                         <p:commandButton type="button"
-                                         rendered="#{hotelsListViewBean.count>10}"
+                                         rendered="#{hotelsListBean.count>10}"
                                          value="More"
                                          icon="ui-icon-circle-triangle-s"/>
                     </f:facet>

@@ -12,7 +12,7 @@ import java.util.List;
  * @author Ilya Murzinov
  *         Date: 18.06.14
  */
-@ManagedBean(name = "hotelsListViewBean")
+@ManagedBean
 @ViewScoped
 public class HotelsListBean {
     @ManagedProperty(value = "#{hotelServiceImpl}")

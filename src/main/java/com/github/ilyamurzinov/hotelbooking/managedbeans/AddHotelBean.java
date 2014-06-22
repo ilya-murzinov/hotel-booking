@@ -9,7 +9,7 @@ import javax.faces.bean.*;
  * @author Ilya Murzinov
  *         Date: 18.06.14
  */
-@ManagedBean(name = "addHotelBean")
+@ManagedBean
 @ViewScoped
 public class AddHotelBean {
     @ManagedProperty(value = "#{hotelServiceImpl}")
