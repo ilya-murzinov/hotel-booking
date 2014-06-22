@@ -30,7 +30,10 @@ public class HotelsListBean {
     }
 
     public List<Hotel> getList() {
-        return list != null ? list : (list = hotelService.listHotel());
+        if (list == null) {
+            list = hotelService.listHotel();
+        }
+        return list;
     }
 
     public int getCount() {

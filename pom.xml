@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.ilyamurzinov</groupId>
-  <artifactId>tsystems-test</artifactId>
+  <artifactId>hotel-booking</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>tsystems-test</name>
+  <name>hotel-booking</name>
   <url>http://maven.apache.org</url>
   <properties>
     <java-version>1.6</java-version>
@@ -20,11 +20,7 @@
     </repository>
   </repositories>
   <dependencies>
-    <dependency>
-      <groupId>javax.transaction</groupId>
-      <artifactId>javax.transaction-api</artifactId>
-      <version>1.2</version>
-    </dependency>
+    <!-- Spring -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
@@ -54,6 +50,13 @@
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-config</artifactId>
       <version>${spring.version}</version>
+    </dependency>
+
+    <!-- Hibernate and other database stuff -->
+    <dependency>
+      <groupId>javax.transaction</groupId>
+      <artifactId>javax.transaction-api</artifactId>
+      <version>1.2</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -90,6 +93,8 @@
       <artifactId>persistence-api</artifactId>
       <version>1.0</version>
     </dependency>
+
+    <!-- Servlet -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
@@ -125,6 +130,15 @@
       <artifactId>rewrite-config-prettyfaces</artifactId>
       <version>2.0.12.Final</version>
     </dependency>
+
+    <!-- Jetty web server -->
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-server</artifactId>
+      <version>${jettyVersion}</version>
+    </dependency>
+
+    <!-- Other -->
     <dependency>
       <groupId>org.primefaces</groupId>
       <artifactId>primefaces</artifactId>
@@ -135,27 +149,17 @@
       <artifactId>gmaps4jsf-core</artifactId>
       <version>3.0.0</version>
     </dependency>
-    <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-server</artifactId>
-      <version>${jettyVersion}</version>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
+
   <build>
-    <finalName>tsystems-test</finalName>
+    <finalName>hotel-booking</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>${java-version}</source>
+          <target>${java-version}</target>
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>

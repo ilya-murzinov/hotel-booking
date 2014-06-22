@@ -7,7 +7,7 @@
                  http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
 
-  <http access-denied-page="/faces/error403.xhtml">
+  <http>
     <intercept-url pattern="/index*" access="ROLE_USER,ROLE_ANONYMOUS,ROLE_ADMIN"/>
     <intercept-url pattern="/hotel*" access="ROLE_USER,ROLE_ANONYMOUS,ROLE_ADMIN"/>
     <intercept-url pattern="/add*" access="ROLE_ADMIN"/>

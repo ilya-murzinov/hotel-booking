@@ -8,144 +8,161 @@
       xmlns:m="http://code.google.com/p/gmaps4jsf/"
       xmlns:p="http://primefaces.org/ui"
         >
-<f:metadata>
-    <f:viewParam name="id" value="#{hotelBean.id}"/>
-</f:metadata>
-<h:head>
-    <title><ui:insert name="title">Hotel Booking</ui:insert></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js">
-    </script>
-    <h:outputStylesheet library="css" name="styles.css" />
-</h:head>
+    <f:metadata>
+        <f:viewParam name="id" value="#{hotelBean.id}"/>
+    </f:metadata>
+    <h:head>
+        <title><ui:insert name="title">Hotel Booking</ui:insert></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <script type="text/javascript"
+                src="https://maps.googleapis.com/maps/api/js">
+        </script>
+        <h:outputStylesheet library="css" name="styles.css" />
+    </h:head>
 
-<h:body>
-    <h:form>
-        <p:toolbar>
-            <f:facet name="left">
-                <p:button value="Home"
-                          outcome="index"/>
-            </f:facet>
-            <f:facet name="right">
-                <h:outputText value="You are logged in as #{userBean.userName}"/>
-                <p:commandButton rendered="#{userBean.guest}"
-                                 value="Login"
-                                 action="login"
-                                 style="background-color:green"/>
-                <h:outputLink value="/j_spring_security_logout"
-                              rendered="#{userBean.user}">
-                    Logout
-                </h:outputLink>
-            </f:facet>
-        </p:toolbar>
-        <p:panel>
-            <h2>
-                <h:outputText value="#{hotelBean.hotel.name}" style="font-weight:bold"/>
-            </h2>
-            <p:commandButton value="Book this hotel!"
-                             onclick="PF('dialog').show();"
-                             style="margin-bottom:10px;background-color:green"/>
-            <p:button value="Edit" outcome="edit" rendered="#{userBean.admin}">
-                <f:param name="id" value="#{hotelBean.id}"/>
-            </p:button>
-            <p:commandButton value="Delete"
-                             rendered="#{userBean.admin}"
-                             action="#{hotelBean.deleteHotel}"
-                             style="background-color:red"/>
-            <h:panelGrid columns="2" style="margin-bottom: 10px;">
-                <h:outputLabel>Address:</h:outputLabel>
-                <h:outputText value="#{hotelBean.hotel.address}" style="font-weight:bold"/>
-                <h:outputLabel>Phone:</h:outputLabel>
-                <h:outputText value="#{hotelBean.hotel.phone}" style="font-weight:bold"/>
-                <h:outputLabel>Price per night:</h:outputLabel>
-                <h:outputText value="#{hotelBean.hotel.price}" style="font-weight:bold"/>
-            </h:panelGrid>
-            <p>
-                #{hotelBean.hotel.description}
-            </p>
+    <h:body>
+        <h:form>
+            <!-- Toolbar with "Home" button, information about current user and login/logout buttons -->
+            <p:toolbar>
+                <f:facet name="left">
+                    <p:button value="Home"
+                              outcome="index"/>
+                </f:facet>
+                <f:facet name="right">
+                    <h:outputText value="You are logged in as #{userBean.userName}"/>
+                    <p:commandButton rendered="#{userBean.guest}"
+                                     value="Login"
+                                     action="login"
+                                     style="background-color:green"/>
+                    <h:outputLink value="/j_spring_security_logout"
+                                  rendered="#{userBean.user}">
+                        Logout
+                    </h:outputLink>
+                </f:facet>
+            </p:toolbar>
 
-            <m:map address="#{hotelBean.hotel.address}">
-                <m:marker/>
-                <m:htmlInformationWindow htmlText="#{hotelBean.hotel.address}"/>
-            </m:map>
+            <!-- Hotel detailed information panel with "Book this hotel" button -->
+            <p:panel>
+                <h2>
+                    <h:outputText value="#{hotelBean.hotel.name}" style="font-weight:bold"/>
+                </h2>
+                <p:commandButton value="Book this hotel!"
+                                 onclick="PF('dialog').show();"
+                                 style="margin-bottom:10px;background-color:green"/>
 
-            <p:commandButton value="Book this hotel!"
-                             onclick="PF('dialog').show();"
-                             style="margin-top:10px;background-color:green"/>
+                <!-- Visible only for ROLE_ADMIN -->
+                <p:button value="Edit" outcome="edit" rendered="#{userBean.admin}">
+                    <f:param name="id" value="#{hotelBean.id}"/>
+                </p:button>
+                <!-- Visible only for ROLE_ADMIN -->
+                <p:commandButton value="Delete"
+                                 rendered="#{userBean.admin}"
+                                 action="#{hotelBean.deleteHotel}"
+                                 style="background-color:red"/>
+                <h:panelGrid columns="2" style="margin-bottom: 10px;">
+                    <h:outputLabel>Address:</h:outputLabel>
+                    <h:outputText value="#{hotelBean.hotel.address}" style="font-weight:bold"/>
+                    <h:outputLabel>Phone:</h:outputLabel>
+                    <h:outputText value="#{hotelBean.hotel.phone}" style="font-weight:bold"/>
+                    <h:outputLabel>Price per night:</h:outputLabel>
+                    <h:outputText value="#{hotelBean.hotel.price}" style="font-weight:bold"/>
+                </h:panelGrid>
+                <p>
+                    #{hotelBean.hotel.description}
+                </p>
+
+                <!-- Google map -->
+                <m:map address="#{hotelBean.hotel.address}">
+                    <m:marker/>
+                    <m:htmlInformationWindow htmlText="#{hotelBean.hotel.address}"/>
+                </m:map>
+
+                <p:commandButton value="Book this hotel!"
+                                 onclick="PF('dialog').show();"
+                                 style="margin-top:10px;background-color:green"/>
+            </p:panel>
+
+            <!-- "Provide contacts" dialog -->
+            <p:dialog header="Booking"
+                      widgetVar="dialog"
+                      resizable="false"
+                      modal="true">
+                <h:outputText value="Please, provide your contact information"/>
+                <h:panelGrid columns="2">
+                    <h:outputLabel for="phone" value="Phone:" />
+                    <p:inputText id="phone" label="phone" />
+                    <h:outputLabel for="email" value="E-mail:" />
+                    <p:inputText id="email" label="email" />
+                    <f:facet name="footer">
+                        <p:commandButton value="OK"
+                                         oncomplete="PF('dialog').hide();PF('thanks-dialog').show();" />
+                        <p:commandButton value="Cancel"
+                                         oncomplete="PF('dialog').hide();" />
+                    </f:facet>
+                </h:panelGrid>
+            </p:dialog>
+
+            <!-- "Thanks" dialog  -->
+            <p:dialog header="Thanks!"
+                      widgetVar="thanks-dialog"
+                      resizable="false"
+                      modal="true">
+                <h:panelGrid columns="2">
+                    <h:outputText value="Thank you! We will call you back as soon as possible!"/>
+                    <f:facet name="footer">
+                        <p:commandButton value="OK"
+                                         oncomplete="PF('thanks-dialog').hide();" />
+                    </f:facet>
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+
+        <p:panel header="Comments">
+            <!-- View comments panel -->
+            <h:form id="comments">
+                <h:dataTable id="comment-table" value="#{hotelBean.hotel.comments}" var="comment">
+                    <h:column>
+                        <h:outputLabel style="font-weight:bold">#{comment.author} :</h:outputLabel>
+                        #{comment.text}
+                    </h:column>
+                    <h:column>
+                        <!-- Visible only for author of comment or ROLE_ADMIN -->
+                        <h:commandLink value="Delete"
+                                       action="#{hotelBean.deleteComment(comment.id)}"
+                                       rendered="#{userBean.userName.equals(comment.author) || userBean.admin}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+
+            <!-- Add comment panel -->
+            <h:form id="add-comment">
+                <h:panelGrid columns="2">
+                    <h:outputLabel>Author: </h:outputLabel>
+                    <!-- If anonymous -->
+                    <p:inputText
+                            id="author"
+                            size="20"
+                            required="true"
+                            maxlength="30"
+                            rendered="#{userBean.guest}"
+                            value="#{hotelBean.commentModel.author}"/>
+                    <!-- If not anonymous -->
+                    <h:outputText value="#{userBean.userName}"
+                                  rendered="#{userBean.user}"
+                                  style="font-weight:bold"/>
+                    <h:outputLabel>Comment: </h:outputLabel>
+                    <p:inputTextarea
+                            id="text"
+                            required="true"
+                            maxlength="1000"
+                            rows="5"
+                            cols="50"
+                            value="#{hotelBean.commentModel.text}"/>
+                    <p:commandButton
+                            value="Add comment"
+                            action="#{hotelBean.addComment}"/>
+                </h:panelGrid>
+            </h:form>
         </p:panel>
-        <p:dialog header="Booking"
-                  widgetVar="dialog"
-                  resizable="false"
-                  modal="true">
-            <h:panelGrid columns="2">
-                <h:outputLabel for="phone" value="Phone:" />
-                <p:inputText id="phone" label="phone" />
-                <h:outputLabel for="email" value="E-mail:" />
-                <p:inputText id="email" label="email" />
-                <f:facet name="footer">
-                    <p:commandButton value="OK"
-                                     oncomplete="PF('dialog').hide();PF('thanks-dialog').show();" />
-                    <p:commandButton value="Cancel"
-                                     oncomplete="PF('dialog').hide();" />
-                </f:facet>
-            </h:panelGrid>
-        </p:dialog>
-        <p:dialog header="Thanks!"
-                  widgetVar="thanks-dialog"
-                  resizable="false"
-                  modal="true">
-            <h:panelGrid columns="2">
-                <h:outputText value="Thank you! We will call you back as soon as possible!"/>
-                <f:facet name="footer">
-                    <p:commandButton value="OK"
-                                     oncomplete="PF('thanks-dialog').hide();" />
-                </f:facet>
-            </h:panelGrid>
-        </p:dialog>
-    </h:form>
-
-    <p:panel header="Comments">
-        <h:form id="comments">
-            <h:dataTable id="comment-table" value="#{hotelBean.hotel.comments}" var="comment">
-                <h:column>
-                    <h:outputLabel style="font-weight:bold">#{comment.author} :</h:outputLabel>
-                    #{comment.text}
-                </h:column>
-                <h:column>
-                    <h:commandLink value="Delete"
-                                   action="#{hotelBean.deleteComment(comment.id)}"
-                                   rendered="#{userBean.userName.equals(comment.author) || userBean.admin}"/>
-                </h:column>
-            </h:dataTable>
-        </h:form>
-        <h:form id="add-comment">
-            <h:panelGrid columns="2">
-                <h:outputLabel>Author: </h:outputLabel>
-                <p:inputText
-                        id="author"
-                        size="20"
-                        required="true"
-                        maxlength="30"
-                        rendered="#{userBean.guest}"
-                        value="#{hotelBean.commentModel.author}"/>
-                <h:outputText value="#{userBean.userName}"
-                              rendered="#{userBean.user}"
-                              style="font-weight:bold"/>
-                <h:outputLabel>Comment: </h:outputLabel>
-                <p:inputTextarea
-                        id="text"
-                        required="true"
-                        maxlength="1000"
-                        rows="5"
-                        cols="50"
-                        value="#{hotelBean.commentModel.text}"/>
-                <p:commandButton
-                        value="Add comment"
-                        action="#{hotelBean.addComment}"/>
-            </h:panelGrid>
-        </h:form>
-    </p:panel>
-
-</h:body>
+    </h:body>
 </html>

@@ -12,8 +12,7 @@
     <property name="sessionFactory" ref="sessionFactory" />
   </bean>
 
-  <bean
-      class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="location" value="classpath:db.properties"/>
   </bean>
 
