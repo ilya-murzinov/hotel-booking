@@ -72,7 +72,7 @@ public class HotelBean {
      * @return current hotel based on id
      */
     public Hotel getHotel() {
-        if (hotel == null) {
+        if (id != 0 && hotel == null) {
             hotel = hotelService.getHotel(id);
         }
         return hotel;

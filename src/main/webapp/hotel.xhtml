@@ -30,10 +30,10 @@
                 </f:facet>
                 <f:facet name="right">
                     <h:outputText value="You are logged in as #{userBean.userName}"/>
-                    <p:commandButton rendered="#{userBean.guest}"
-                                     value="Login"
-                                     action="login"
-                                     style="background-color:green"/>
+                    <p:button rendered="#{userBean.guest}"
+                              value="Login"
+                              outcome="login"
+                              style="background-color:green"/>
                     <h:outputLink value="/j_spring_security_logout"
                                   rendered="#{userBean.user}">
                         Logout

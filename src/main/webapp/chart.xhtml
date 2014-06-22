@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:m="http://code.google.com/p/gmaps4jsf/"
+      xmlns:p="http://primefaces.org/ui"
+        >
+    <h:head>
+        <title><ui:insert name="title">Hotel Booking</ui:insert></title>
+        <h:outputStylesheet library="css" name="styles.css" />
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:pieChart id="sample"
+                        value="#{chartBean.pieModel}"
+                        legendPosition="w"
+                        showDataLabels="true"
+                        title="Number of comments per hotel"/>
+        </h:form>
+    </h:body>
+</html>

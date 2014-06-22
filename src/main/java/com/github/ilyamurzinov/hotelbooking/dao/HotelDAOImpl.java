@@ -45,7 +45,12 @@ public class HotelDAOImpl implements HotelDAO {
     @SuppressWarnings("unchecked")
     @Override
     public List<Hotel> listHotel() {
-        return sessionFactory.getCurrentSession().createQuery("from Hotel order by size(comments) desc").list();
+        List<Hotel> list = sessionFactory.getCurrentSession().
+                createQuery("from Hotel order by size(comments) desc").list();
+        for (Hotel h : list) {
+            Hibernate.initialize(h.getComments());
+        }
+        return list;
     }
 
     /**

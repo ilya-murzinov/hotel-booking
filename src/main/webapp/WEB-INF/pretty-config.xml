@@ -28,4 +28,9 @@
     <view-id value="/faces/hotel.xhtml" />
   </url-mapping>
 
+  <url-mapping id="chart">
+    <pattern value="/chart" />
+    <view-id value="/faces/chart.xhtml" />
+  </url-mapping>
+
 </pretty-config>
