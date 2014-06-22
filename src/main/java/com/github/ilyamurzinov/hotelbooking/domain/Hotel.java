@@ -1,4 +1,4 @@
-package com.github.ilyamurzinov.domain;
+package com.github.ilyamurzinov.hotelbooking.domain;
 
 import javax.persistence.*;
 import java.util.List;

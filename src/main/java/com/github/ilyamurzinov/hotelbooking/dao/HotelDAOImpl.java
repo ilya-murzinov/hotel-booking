@@ -1,9 +1,8 @@
-package com.github.ilyamurzinov.dao;
+package com.github.ilyamurzinov.hotelbooking.dao;
 
-import com.github.ilyamurzinov.domain.Comment;
-import com.github.ilyamurzinov.domain.Hotel;
+import com.github.ilyamurzinov.hotelbooking.domain.Comment;
+import com.github.ilyamurzinov.hotelbooking.domain.Hotel;
 import org.hibernate.Hibernate;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

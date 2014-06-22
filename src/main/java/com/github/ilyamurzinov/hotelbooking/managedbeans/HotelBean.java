@@ -1,11 +1,9 @@
-package com.github.ilyamurzinov.managedbeans;
+package com.github.ilyamurzinov.hotelbooking.managedbeans;
 
-import com.github.ilyamurzinov.domain.Comment;
-import com.github.ilyamurzinov.domain.Hotel;
-import com.github.ilyamurzinov.service.CommentService;
-import com.github.ilyamurzinov.service.HotelService;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
+import com.github.ilyamurzinov.hotelbooking.domain.Comment;
+import com.github.ilyamurzinov.hotelbooking.domain.Hotel;
+import com.github.ilyamurzinov.hotelbooking.service.CommentService;
+import com.github.ilyamurzinov.hotelbooking.service.HotelService;
 
 import javax.faces.bean.*;
 import java.util.List;

@@ -1,12 +1,9 @@
-package com.github.ilyamurzinov.dao;
+package com.github.ilyamurzinov.hotelbooking.dao;
 
-import com.github.ilyamurzinov.domain.Comment;
+import com.github.ilyamurzinov.hotelbooking.domain.Comment;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * @author Ilya Murzinov

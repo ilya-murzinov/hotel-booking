@@ -1,6 +1,4 @@
-package com.github.ilyamurzinov.domain;
-
-import org.hibernate.annotations.ForeignKey;
+package com.github.ilyamurzinov.hotelbooking.domain;
 
 import javax.persistence.*;
 

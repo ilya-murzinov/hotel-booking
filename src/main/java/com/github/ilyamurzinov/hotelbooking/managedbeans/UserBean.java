@@ -1,14 +1,12 @@
-package com.github.ilyamurzinov.managedbeans;
+package com.github.ilyamurzinov.hotelbooking.managedbeans;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import java.util.Collection;
 
 /**
  * @author Ilya Murzinov

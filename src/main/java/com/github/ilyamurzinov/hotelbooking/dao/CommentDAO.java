@@ -1,8 +1,6 @@
-package com.github.ilyamurzinov.dao;
+package com.github.ilyamurzinov.hotelbooking.dao;
 
-import com.github.ilyamurzinov.domain.Comment;
-
-import java.util.List;
+import com.github.ilyamurzinov.hotelbooking.domain.Comment;
 
 /**
  * @author Ilya Murzinov

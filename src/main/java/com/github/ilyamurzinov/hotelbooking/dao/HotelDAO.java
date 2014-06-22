@@ -1,14 +1,14 @@
-package com.github.ilyamurzinov.service;
+package com.github.ilyamurzinov.hotelbooking.dao;
 
-import com.github.ilyamurzinov.domain.Hotel;
+import com.github.ilyamurzinov.hotelbooking.domain.Hotel;
 
 import java.util.List;
 
 /**
  * @author Ilya Murzinov
- *         Date: 16.06.14
+ *    Date: 16.06.14
  */
-public interface HotelService {
+public interface HotelDAO {
     Hotel getHotel(int id);
 
     void addHotel(Hotel hotel);

@@ -1,7 +1,7 @@
-package com.github.ilyamurzinov.service;
+package com.github.ilyamurzinov.hotelbooking.service;
 
-import com.github.ilyamurzinov.dao.HotelDAO;
-import com.github.ilyamurzinov.domain.Hotel;
+import com.github.ilyamurzinov.hotelbooking.dao.HotelDAO;
+import com.github.ilyamurzinov.hotelbooking.domain.Hotel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

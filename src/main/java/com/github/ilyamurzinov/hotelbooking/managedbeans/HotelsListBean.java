@@ -1,7 +1,7 @@
-package com.github.ilyamurzinov.managedbeans;
+package com.github.ilyamurzinov.hotelbooking.managedbeans;
 
-import com.github.ilyamurzinov.domain.Hotel;
-import com.github.ilyamurzinov.service.HotelService;
+import com.github.ilyamurzinov.hotelbooking.domain.Hotel;
+import com.github.ilyamurzinov.hotelbooking.service.HotelService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
