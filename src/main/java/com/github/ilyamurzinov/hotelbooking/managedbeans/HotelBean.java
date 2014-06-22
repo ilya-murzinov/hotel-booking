@@ -5,10 +5,16 @@ import com.github.ilyamurzinov.hotelbooking.domain.Hotel;
 import com.github.ilyamurzinov.hotelbooking.service.CommentService;
 import com.github.ilyamurzinov.hotelbooking.service.HotelService;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.*;
 import java.util.List;
 
 /**
+ * Backing bean for hotel.xhtml
+ *
+ * Provides data about current hotel, updates, deletes it using
+ * {@link com.github.ilyamurzinov.hotelbooking.service.HotelService}
+ *
  * @author Ilya Murzinov
  *         Date: 18.06.14
  */
@@ -24,7 +30,12 @@ public class HotelBean {
     private int id;
     private Hotel hotel;
     private List<Comment> comments;
-    private Comment commentModel = new Comment();
+    private Comment commentModel;
+
+    @PostConstruct
+    public void init() {
+        commentModel = new Comment();
+    }
 
     public Comment getCommentModel() {
         return commentModel;
@@ -54,6 +65,12 @@ public class HotelBean {
         this.id = id;
     }
 
+    /**
+     * This workaround is necessary because id parameter from metadata
+     * gets injected after post-construct.
+     *
+     * @return current hotel based on id
+     */
     public Hotel getHotel() {
         if (hotel == null) {
             hotel = hotelService.getHotel(id);

@@ -9,6 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
+ * Controls transactions to use
+ * {@link com.github.ilyamurzinov.hotelbooking.dao.HotelDAO}
+ * with {@link org.springframework.orm.hibernate3.HibernateTransactionManager}
+ *
  * @author Ilya Murzinov
  *         Date: 16.06.14
  */

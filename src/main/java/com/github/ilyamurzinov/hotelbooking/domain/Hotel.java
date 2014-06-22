@@ -3,6 +3,10 @@ package com.github.ilyamurzinov.hotelbooking.domain;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * @author Ilya Murzinov
+ *         Date: 18.06.14
+ */
 @Entity
 @Table(name = "hotel")
 public class Hotel {

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
+ * Provides methods to create, update, read, delete Hotels from database
+ *
  * @author Ilya Murzinov
  *         Date: 16.06.14
  */
@@ -18,6 +20,9 @@ public class HotelDAOImpl implements HotelDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Hotel getHotel(int id) {
         Hotel hotel = (Hotel) sessionFactory.getCurrentSession().get(Hotel.class, id);
@@ -34,12 +39,18 @@ public class HotelDAOImpl implements HotelDAO {
         sessionFactory.getCurrentSession().save(hotel);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<Hotel> listHotel() {
         return sessionFactory.getCurrentSession().createQuery("from Hotel order by size(comments) desc").list();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<Hotel> listHotel(String name) {

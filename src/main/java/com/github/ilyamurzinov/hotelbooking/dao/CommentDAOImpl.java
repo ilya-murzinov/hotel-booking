@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
+ * Provides methods to create and delete Comments from database
+ *
  * @author Ilya Murzinov
  *         Date: 18.06.14
  */

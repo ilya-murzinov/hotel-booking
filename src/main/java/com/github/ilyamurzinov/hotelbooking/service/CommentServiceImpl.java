@@ -7,8 +7,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
+ * Controls transactions to use
+ * {@link com.github.ilyamurzinov.hotelbooking.dao.CommentDAO}
+ * with {@link org.springframework.orm.hibernate3.HibernateTransactionManager}
+ *
  * @author Ilya Murzinov
- *         Date: 18.06.14
+ *         Date: 16.06.14
  */
 @Component
 public class CommentServiceImpl implements CommentService {

@@ -3,12 +3,18 @@ package com.github.ilyamurzinov.hotelbooking.managedbeans;
 import com.github.ilyamurzinov.hotelbooking.domain.Hotel;
 import com.github.ilyamurzinov.hotelbooking.service.HotelService;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import java.util.List;
 
 /**
+ * Backing bean for index.xhtml
+ *
+ * Provides information about all hotels in database using
+ * {@link com.github.ilyamurzinov.hotelbooking.service.HotelService}
+ *
  * @author Ilya Murzinov
  *         Date: 18.06.14
  */
@@ -21,6 +27,11 @@ public class HotelsListBean {
     private int count;
     private String searchCriteria;
 
+    @PostConstruct
+    public void init() {
+        list = hotelService.listHotel();
+    }
+
     public HotelService getHotelService() {
         return hotelService;
     }
@@ -30,9 +41,6 @@ public class HotelsListBean {
     }
 
     public List<Hotel> getList() {
-        if (list == null) {
-            list = hotelService.listHotel();
-        }
         return list;
     }
 
@@ -48,6 +56,9 @@ public class HotelsListBean {
         this.searchCriteria = searchCriteria;
     }
 
+    /**
+     * Update list of hotels using provided search criteria
+     */
     public void search() {
         list = hotelService.listHotel(searchCriteria);
     }
