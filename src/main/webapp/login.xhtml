@@ -12,7 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </h:head>
 <body>
-<form action="/j_spring_security_check" method="POST">
+<form action="#{request.contextPath}/j_spring_security_check" method="POST">
     <label for="j_username">User Id: </label>
     <input id="j_username" name="j_username" type="text" />
     <label for="j_password">Password: </label>
